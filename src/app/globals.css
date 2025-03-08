@@ -24,6 +24,14 @@
   /* Animation variables */
   --page-transition-duration: 0.3s;
   --theme-transition-duration: 0.3s;
+  
+  /* Hover effect variables - for consistency */
+  --hover-transition-duration: 0.2s;
+  --hover-transition-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --hover-offset-x: -4px;
+  --hover-offset-y: -4px;
+  --hover-shadow-offset: 6px;
+  --default-shadow-offset: 4px;
 }
 
 @theme inline {
@@ -157,28 +165,28 @@ a, button, nav, .text-sm, .text-xs {
   justify-content: center;
   position: relative;
   z-index: 5;
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all var(--hover-transition-duration) var(--hover-transition-ease);
   border-radius: 0; /* Square corners for brutalist design */
+  box-shadow: var(--default-shadow-offset) var(--default-shadow-offset) 0 var(--foreground-secondary);
 }
 
 .btn-primary {
   background-color: var(--foreground-primary);
   color: var(--background-primary);
-  box-shadow: 4px 4px 0 var(--foreground-secondary);
 }
 
 .btn-primary:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 var(--foreground-secondary);
+  transform: translate(var(--hover-offset-x), var(--hover-offset-y));
+  box-shadow: var(--hover-shadow-offset) var(--hover-shadow-offset) 0 var(--foreground-secondary);
 }
 
 /* Standardized animations for all components */
 .animate-on-hover {
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all var(--hover-transition-duration) var(--hover-transition-ease);
 }
 
 .animate-on-hover:hover {
-  transform: translateY(-4px);
+  transform: translate(var(--hover-offset-x), var(--hover-offset-y));
 }
 
 .animate-on-hover:focus-visible {
@@ -192,31 +200,31 @@ a, button, nav, .text-sm, .text-xs {
   border: 2px solid var(--foreground-primary);
   border-radius: 0; /* Square corners for brutalist design */
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all var(--hover-transition-duration) var(--hover-transition-ease);
   position: relative;
   z-index: 5;
-  box-shadow: 6px 6px 0 var(--foreground-secondary);
+  box-shadow: var(--default-shadow-offset) var(--default-shadow-offset) 0 var(--foreground-secondary);
   padding: 1.5rem;
 }
 
 .card:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0 var(--foreground-secondary);
+  transform: translate(var(--hover-offset-x), var(--hover-offset-y));
+  box-shadow: var(--hover-shadow-offset) var(--hover-shadow-offset) 0 var(--foreground-secondary);
 }
 
 /* Lift effect for hover - more pronounced */
 .lift-effect {
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform var(--hover-transition-duration) var(--hover-transition-ease), 
+              box-shadow var(--hover-transition-duration) var(--hover-transition-ease);
   will-change: transform;
   position: relative;
   z-index: 5;
-  box-shadow: 4px 4px 0 var(--foreground-secondary);
+  box-shadow: var(--default-shadow-offset) var(--default-shadow-offset) 0 var(--foreground-secondary);
 }
 
 .lift-effect:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 var(--foreground-secondary);
+  transform: translate(var(--hover-offset-x), var(--hover-offset-y));
+  box-shadow: var(--hover-shadow-offset) var(--hover-shadow-offset) 0 var(--foreground-secondary);
 }
 
 /* Standard button styles - brutalist approach */
@@ -230,15 +238,15 @@ a, button, nav, .text-sm, .text-xs {
   text-transform: uppercase;
   background-color: var(--foreground-primary);
   color: var(--background-primary);
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all var(--hover-transition-duration) var(--hover-transition-ease);
   border: 2px solid var(--foreground-primary);
   border-radius: 0; /* Square corners for brutalist design */
-  box-shadow: 4px 4px 0 var(--foreground-secondary);
+  box-shadow: var(--default-shadow-offset) var(--default-shadow-offset) 0 var(--foreground-secondary);
 }
 
 .standard-button:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 var(--foreground-secondary);
+  transform: translate(var(--hover-offset-x), var(--hover-offset-y));
+  box-shadow: var(--hover-shadow-offset) var(--hover-shadow-offset) 0 var(--foreground-secondary);
 }
 
 .standard-button.outline {
@@ -258,13 +266,13 @@ a, button, nav, .text-sm, .text-xs {
   border-radius: 0; /* Square for brutalist design */
   overflow: hidden;
   border: 2px solid var(--foreground-primary);
-  box-shadow: 6px 6px 0 var(--foreground-secondary);
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: var(--default-shadow-offset) var(--default-shadow-offset) 0 var(--foreground-secondary);
+  transition: all var(--hover-transition-duration) var(--hover-transition-ease);
 }
 
 .profile-image:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0 var(--foreground-secondary);
+  transform: translate(var(--hover-offset-x), var(--hover-offset-y));
+  box-shadow: var(--hover-shadow-offset) var(--hover-shadow-offset) 0 var(--foreground-secondary);
 }
 
 /* All sections should be transparent */
@@ -281,23 +289,23 @@ section {
   border: 2px solid var(--foreground-primary);
   background: transparent;
   color: var(--foreground-primary);
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all var(--hover-transition-duration) var(--hover-transition-ease);
   width: 40px;
   height: 40px;
   padding: 0.5rem;
   border-radius: 0; /* Square for brutalist design */
   position: relative;
   z-index: 10;
-  box-shadow: 3px 3px 0 var(--foreground-secondary);
+  box-shadow: var(--default-shadow-offset) var(--default-shadow-offset) 0 var(--foreground-secondary);
 }
 
 .theme-toggle:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0 var(--foreground-secondary);
+  transform: translate(var(--hover-offset-x), var(--hover-offset-y));
+  box-shadow: var(--hover-shadow-offset) var(--hover-shadow-offset) 0 var(--foreground-secondary);
 }
 
 .theme-toggle svg {
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all var(--hover-transition-duration) var(--hover-transition-ease);
   width: 24px;
   height: 24px;
 }
@@ -310,7 +318,7 @@ section {
 *, ::before, ::after {
   transition-property: background-color, border-color, fill, stroke, transform, box-shadow;
   transition-duration: 0.2s;
-  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-timing-function: var(--hover-transition-ease);
 }
 
 /* Grid and layout helpers */

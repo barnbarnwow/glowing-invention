@@ -33,6 +33,7 @@ export default function BrutalistCard({
     hover: {
       x: -4,
       y: -4,
+      boxShadow: "6px 6px 0 var(--foreground-secondary)",
       transition: {
         duration: 0.2,
         ease: [0.25, 0.46, 0.45, 0.94],
@@ -40,12 +41,15 @@ export default function BrutalistCard({
     },
   };
 
-  // Determine shadow size
-  let shadowSize = "6px 6px 0";
+  // Determine default shadow size
+  let shadowSize = "4px 4px 0";
+
+  // Shadow size variations only affect the initial state,
+  // hover will always be 6px 6px for consistency
   if (shadow === "small") {
-    shadowSize = "4px 4px 0";
+    shadowSize = "3px 3px 0";
   } else if (shadow === "large") {
-    shadowSize = "8px 8px 0";
+    shadowSize = "5px 5px 0";
   }
 
   // Determine background color based on variant
@@ -62,6 +66,7 @@ export default function BrutalistCard({
       style={{
         boxShadow: `${shadowSize} var(--foreground-secondary)`,
         backgroundColor: bgColor,
+        transformOrigin: "center center",
       }}
       variants={animate ? cardVariants : undefined}
       initial={animate ? "hidden" : undefined}
