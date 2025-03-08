@@ -15,7 +15,7 @@ export default function ProfileImage() {
   const isExternalImage = profileData.profileImage?.startsWith("http");
 
   return (
-    <Card useProximityBorder={true} className="p-0" liftEffect={true}>
+    <Card className="p-0" liftEffect={true}>
       <div className="p-8 h-full flex flex-col items-center justify-center">
         {/* Use a non-visible container for animation coordination */}
         <motion.div

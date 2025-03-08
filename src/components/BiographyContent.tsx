@@ -4,12 +4,11 @@ import React from "react";
 import { profileData } from "@/data/profileData";
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "@/utils/animationVariants";
-import ProximityBorder from "./BorderGlowWrapper";
 import Card from "./Card";
 
 export default function BiographyContent() {
   return (
-    <Card useProximityBorder={true} className="p-0" liftEffect={true}>
+    <Card className="p-0" liftEffect={true}>
       <motion.div
         className="p-8 h-full"
         variants={containerVariants}

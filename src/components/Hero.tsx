@@ -49,13 +49,13 @@ export default function Hero() {
           className="flex flex-wrap gap-4 justify-center"
           variants={itemVariants}
         >
-          <Link href="/about" className="standard-button">
+          <Link href="/about" className="standard-button lift-effect">
             About Me
           </Link>
-          <Link href="/projects" className="standard-button">
+          <Link href="/projects" className="standard-button lift-effect">
             View My Work
           </Link>
-          <Link href="/contact" className="standard-button">
+          <Link href="/contact" className="standard-button lift-effect">
             Contact Me
           </Link>
         </motion.div>
