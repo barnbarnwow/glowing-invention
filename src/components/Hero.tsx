@@ -50,16 +50,31 @@ export default function Hero() {
               <BrutalistHeading level={3} animate={false}>
                 Navigation
               </BrutalistHeading>
-              <div className="flex flex-col space-y-4">
-                <BrutalistButton href="/about" variant="outline">
+              <div className="flex flex-col space-y-6">
+                <BrutalistButton
+                  href="/about"
+                  variant="outline"
+                  size="medium"
+                  animate={true}
+                >
                   About Me
                 </BrutalistButton>
 
-                <BrutalistButton href="/projects" variant="outline">
+                <BrutalistButton
+                  href="/projects"
+                  variant="outline"
+                  size="medium"
+                  animate={true}
+                >
                   View My Work
                 </BrutalistButton>
 
-                <BrutalistButton href="/skills" variant="outline">
+                <BrutalistButton
+                  href="/skills"
+                  variant="outline"
+                  size="medium"
+                  animate={true}
+                >
                   My Skills
                 </BrutalistButton>
               </div>

@@ -36,8 +36,18 @@ export default function BrutalistButton({
     hover: {
       x: -2,
       y: -2,
+      boxShadow: "6px 6px 0 var(--foreground-secondary)",
       transition: {
         duration: 0.2,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    },
+    tap: {
+      x: 0,
+      y: 0,
+      boxShadow: "0px 0px 0 var(--foreground-secondary)",
+      transition: {
+        duration: 0.1,
         ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
@@ -45,10 +55,6 @@ export default function BrutalistButton({
 
   // Base styles
   let buttonClasses = "border-2 border-[var(--foreground-primary)] relative";
-  let buttonStyles = {
-    boxShadow: "4px 4px 0 var(--foreground-secondary)",
-    transition: "all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-  };
 
   // Size styles
   if (size === "small") {
@@ -78,13 +84,16 @@ export default function BrutalistButton({
   const button = (
     <MotionComponent
       className={buttonClasses}
-      style={buttonStyles}
       variants={animate ? buttonVariants : undefined}
       initial={animate ? "hidden" : undefined}
       animate={animate ? "visible" : undefined}
       whileHover="hover"
-      whileTap={{ x: 0, y: 0 }}
+      whileTap="tap"
       onClick={onClick}
+      style={{
+        boxShadow: "4px 4px 0 var(--foreground-secondary)",
+        transformOrigin: "center center",
+      }}
     >
       {children}
     </MotionComponent>

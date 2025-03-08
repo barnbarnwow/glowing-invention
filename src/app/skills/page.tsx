@@ -5,9 +5,11 @@ import PageTransition from "@/components/PageTransition";
 import { profileData } from "@/data/profileData";
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "@/utils/animationVariants";
-import ProgressBar from "@/components/ProgressBar";
-import BulletItem from "@/components/BulletItem";
-import Card from "@/components/Card";
+import BrutalistGrid from "@/components/BrutalistGrid";
+import BrutalistHeading from "@/components/BrutalistHeading";
+import BrutalistCard from "@/components/BrutalistCard";
+import BrutalistProgressBar from "@/components/BrutalistProgressBar";
+import BrutalistBulletList from "@/components/BrutalistBulletList";
 
 // Define skill category mapping type for better type safety
 type SkillCategoryMap = {
@@ -82,11 +84,11 @@ export default function SkillsPage() {
       { skill: "Marketing Strategy", level: "Intermediate", percentage: 75 },
     ];
 
-    // Filter to include skills from keySkills and limit to top 3
+    // Filter to include skills from keySkills and limit to top 5
     return allProficiencies
       .filter((item) => keySkills.includes(item.skill))
       .sort((a, b) => b.percentage - a.percentage) // Sort by percentage (highest first)
-      .slice(0, 3); // Limit to top 3
+      .slice(0, 5); // Limit to top 5
   }, [keySkills]);
 
   // Professional development focus areas
@@ -114,20 +116,17 @@ export default function SkillsPage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen pt-16">
-        <section className="py-20 px-4 clean-bg">
-          <div className="max-w-4xl mx-auto">
-            <motion.h1
-              className="text-3xl md:text-4xl font-bold mb-6 text-center text-[var(--foreground-primary)]"
-              variants={itemVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              My Skills
-            </motion.h1>
+      <div className="min-h-screen pt-16 relative">
+        <BrutalistGrid opacity={3} animate={true} rows={16} columns={16} />
 
-            <motion.p
-              className="text-lg text-center text-[var(--foreground-secondary)] mb-12 max-w-2xl mx-auto"
+        <section className="py-20 px-4 clean-bg relative z-10">
+          <div className="max-w-5xl mx-auto">
+            <BrutalistHeading level={1} align="center">
+              My Skills
+            </BrutalistHeading>
+
+            <motion.div
+              className="text-lg text-center mb-16 max-w-3xl mx-auto font-serif"
               variants={itemVariants}
               initial="hidden"
               animate="visible"
@@ -136,21 +135,28 @@ export default function SkillsPage() {
               I&apos;ve acquired a diverse set of skills throughout my journey
               as a developer. Here&apos;s a breakdown of my technical expertise
               and competencies.
-            </motion.p>
+            </motion.div>
+
+            <div className="brutalist-divider mb-16"></div>
 
             <motion.div
-              className="relative z-10"
+              className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-12"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
-              {/* Professional Development - Moved to the top */}
-              <motion.div className="mb-12" variants={itemVariants}>
-                <h2 className="text-2xl font-medium mb-6 text-[var(--foreground-primary)]">
+              {/* Professional Development - Left column */}
+              <motion.div className="md:col-span-5" variants={itemVariants}>
+                <BrutalistHeading level={2} withDivider={true}>
                   Professional Development
-                </h2>
-                <Card className="p-6 rounded-xl">
-                  <p className="text-[var(--foreground-secondary)] mb-4">
+                </BrutalistHeading>
+
+                <BrutalistCard
+                  className="mb-8"
+                  shadow="large"
+                  variant="secondary"
+                >
+                  <p className="text-[var(--foreground-secondary)] mb-6 font-serif">
                     I&apos;m constantly expanding my skillset to stay current
                     with industry trends and emerging technologies. My approach
                     to learning is both hands-on and theoretical, ensuring a
@@ -158,130 +164,115 @@ export default function SkillsPage() {
                   </p>
 
                   {relevantInterests.length > 0 && (
-                    <div className="mb-4">
-                      <p className="text-[var(--foreground-secondary)] mb-2">
-                        Core areas of interest:
-                      </p>
-                      <ul className="mt-2 space-y-2">
-                        {relevantInterests.map((interest) => (
-                          <BulletItem key={interest} text={interest} />
-                        ))}
-                      </ul>
-                    </div>
+                    <BrutalistBulletList
+                      title="Core Areas of Interest"
+                      items={relevantInterests}
+                      className="mb-8"
+                    />
                   )}
 
-                  <p className="text-[var(--foreground-secondary)]">
-                    Recent areas of focus:
-                  </p>
-                  <ul className="mt-2 space-y-2">
-                    {focusAreas.map((area) => (
-                      <BulletItem key={area} text={area} />
-                    ))}
-                  </ul>
-                </Card>
+                  <BrutalistBulletList
+                    title="Recent Areas of Focus"
+                    items={focusAreas}
+                  />
+                </BrutalistCard>
+
+                {/* Featured Skills - Technical expertise categories */}
+                {hasSkills && (
+                  <>
+                    <BrutalistHeading level={2} withDivider={true}>
+                      Technical Expertise
+                    </BrutalistHeading>
+                    <p className="text-[var(--foreground-secondary)] mb-6 font-serif">
+                      I specialize in modern web development technologies with a
+                      focus on creating responsive, performant applications.
+                    </p>
+
+                    <div className="space-y-6">
+                      {Object.entries(skillCategories).map(
+                        ([category, skills]) => (
+                          <BrutalistCard key={category} variant="tertiary">
+                            <BrutalistHeading level={3} className="!mb-4">
+                              {category}
+                            </BrutalistHeading>
+                            <div className="font-serif">
+                              <ul className="space-y-2 brutalist-list">
+                                {skills.map((skill) => (
+                                  <li key={skill} className="!border-b-0 !py-2">
+                                    <span className="inline-block w-6 text-[var(--foreground-primary)] font-mono mr-2">
+                                      &gt;
+                                    </span>
+                                    <span className="text-[var(--foreground-secondary)]">
+                                      {skill}
+                                    </span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </BrutalistCard>
+                        )
+                      )}
+                    </div>
+                  </>
+                )}
               </motion.div>
 
-              {/* Skill Proficiency - Only render if we have proficiencies */}
-              {skillProficiencies.length > 0 && (
-                <motion.div className="mb-12" variants={itemVariants}>
-                  <h2 className="text-2xl font-medium mb-6 text-[var(--foreground-primary)]">
-                    Top Proficiency Levels
-                  </h2>
-                  <Card className="p-6 rounded-xl">
-                    {skillProficiencies.map((item, index) => (
-                      <ProgressBar
-                        key={item.skill}
-                        skill={item.skill}
-                        level={item.level}
-                        percentage={item.percentage}
-                        index={index}
-                      />
-                    ))}
-                  </Card>
-                </motion.div>
-              )}
+              {/* Skill Proficiency - Right column */}
+              <motion.div className="md:col-span-7" variants={itemVariants}>
+                <BrutalistHeading level={2} withDivider={true}>
+                  Proficiency Levels
+                </BrutalistHeading>
 
-              {/* Featured Skills - Only render if we have skills */}
-              {hasSkills && (
-                <motion.div className="mb-12" variants={itemVariants}>
-                  <h2 className="text-2xl font-medium mb-6 text-[var(--foreground-primary)]">
-                    Technical Expertise
-                  </h2>
-                  <p className="text-[var(--foreground-secondary)] mb-6">
-                    I specialize in modern web development technologies with a
-                    focus on creating responsive, performant applications. My
-                    technical skills span frontend frameworks, backend systems,
-                    and development tools that enable me to build comprehensive
-                    solutions.
-                  </p>
-                  <motion.div
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                    variants={containerVariants}
-                  >
-                    {Object.entries(skillCategories).map(
-                      ([category, skills]) => (
-                        <Card key={category} className="p-6 rounded-xl">
-                          <h3 className="text-xl font-medium mb-4 text-[var(--foreground-primary)]">
-                            {category}
-                          </h3>
-                          <div className="space-y-2">
-                            {skills.map((skill) => (
-                              <motion.div
-                                key={skill}
-                                className="flex items-center space-x-2"
-                                variants={itemVariants}
-                              >
-                                <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)]"></span>
-                                <span className="text-[var(--foreground-secondary)]">
-                                  {skill}
-                                </span>
-                              </motion.div>
-                            ))}
-                          </div>
-                        </Card>
-                      )
-                    )}
-                  </motion.div>
-                </motion.div>
-              )}
-
-              {/* Business Skills Section */}
-              <motion.div className="mb-12" variants={itemVariants}>
-                <h2 className="text-2xl font-medium mb-6 text-[var(--foreground-primary)]">
-                  Business Skills
-                </h2>
-                <p className="text-[var(--foreground-secondary)] mb-6">
-                  With a background in Business Administration, I bring a unique
-                  blend of technical and business acumen to my development
-                  projects, ensuring solutions that are not only technically
-                  sound but also aligned with business objectives.
+                <p className="text-[var(--foreground-secondary)] mb-8 font-serif">
+                  My expertise spans various technologies with a focus on
+                  frontend development. Here's a detailed breakdown of my
+                  technical proficiency.
                 </p>
-                <motion.div
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                  variants={containerVariants}
+
+                {skillProficiencies.map((item, index) => (
+                  <BrutalistProgressBar
+                    key={item.skill}
+                    skill={item.skill}
+                    level={item.level}
+                    percentage={item.percentage}
+                    index={index}
+                  />
+                ))}
+
+                <div className="brutalist-divider my-12"></div>
+
+                <BrutalistHeading level={2} withDivider={true}>
+                  Skill Development Approach
+                </BrutalistHeading>
+
+                <BrutalistCard
+                  className="mb-8"
+                  shadow="medium"
+                  variant="primary"
                 >
-                  {businessSkills.map((skillGroup: BusinessSkillsGroup) => (
-                    <Card key={skillGroup.category} className="p-6 rounded-xl">
-                      <h3 className="text-xl font-medium mb-4 text-[var(--foreground-primary)]">
-                        {skillGroup.category}
-                      </h3>
-                      <div className="space-y-2">
-                        {skillGroup.skills.map((skill) => (
-                          <motion.div
-                            key={skill}
-                            className="flex items-center space-x-2"
-                            variants={itemVariants}
-                          >
-                            <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)]"></span>
-                            <span className="text-[var(--foreground-secondary)]">
-                              {skill}
-                            </span>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </Card>
-                  ))}
-                </motion.div>
+                  <p className="text-[var(--foreground-secondary)] mb-4 font-serif">
+                    My professional growth strategy focuses on both depth and
+                    breadth, balancing deep expertise in core technologies with
+                    exploration of emerging tools. I believe in practical,
+                    project-based learning complemented by theoretical
+                    understanding.
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-4 mt-8">
+                    <div className="border-2 border-[var(--foreground-primary)] p-4">
+                      <h4 className="text-lg mb-2">Depth</h4>
+                      <p className="text-sm font-serif">
+                        Mastering core technologies through intensive practice
+                      </p>
+                    </div>
+                    <div className="border-2 border-[var(--foreground-primary)] p-4">
+                      <h4 className="text-lg mb-2">Breadth</h4>
+                      <p className="text-sm font-serif">
+                        Exploring complementary skills for versatility
+                      </p>
+                    </div>
+                  </div>
+                </BrutalistCard>
               </motion.div>
             </motion.div>
           </div>
