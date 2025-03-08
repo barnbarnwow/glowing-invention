@@ -45,7 +45,7 @@ export default function ProjectCard({
           {title}
         </h3>
         <p className="text-[var(--foreground-secondary)] mb-4">{description}</p>
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-6">
           {technologies.map((tech) => (
             <span
               key={tech}
@@ -57,12 +57,23 @@ export default function ProjectCard({
         </div>
         <Link
           href={projectUrl}
-          className="text-[var(--accent-primary)] font-medium hover:underline inline-flex items-center group"
+          className="px-4 py-2 rounded-md bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] font-medium transition-all hover:bg-[var(--accent-primary)]/20 inline-flex items-center"
         >
-          View Project{" "}
-          <span className="ml-1 transition-transform group-hover:translate-x-1">
-            →
-          </span>
+          View Project
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M14 5l7 7m0 0l-7 7m7-7H3"
+            />
+          </svg>
         </Link>
       </div>
     </motion.div>

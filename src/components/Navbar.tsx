@@ -12,6 +12,9 @@ export default function Navbar() {
 
   // Handle scroll effect for navbar background
   useEffect(() => {
+    // Set initial state based on scroll position (in case page is refreshed while scrolled)
+    setIsScrolled(window.scrollY > 10);
+
     const handleScroll = () => {
       if (window.scrollY > 10) {
         setIsScrolled(true);
@@ -33,10 +36,13 @@ export default function Navbar() {
     { name: "Contact", path: "/contact" },
   ];
 
+  // Determine if we're on the home page for special styling
+  const isHomePage = pathname === "/";
+
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled
+        isScrolled || !isHomePage
           ? "bg-[var(--background-tertiary)] bg-opacity-90 shadow-md backdrop-blur-sm border-b border-[var(--border-color)]"
           : "bg-transparent"
       }`}
