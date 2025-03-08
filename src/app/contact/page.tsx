@@ -1,92 +1,98 @@
 "use client";
 
-import React from "react";
-import PageTransition from "@/components/PageTransition";
-import Button from "@/components/Button";
-import InputField from "@/components/InputField";
-import { motion } from "framer-motion";
-import {
-  containerVariants,
-  itemVariants,
-  cardVariants,
-} from "@/utils/animationVariants";
+import { Section } from "@/components/layout/Section";
+import { Heading } from "@/components/ui/Heading";
+import { Text } from "@/components/ui/Text";
+import { Grid } from "@/components/layout/Grid";
+import { ContactForm } from "@/components/forms/ContactForm";
 
 export default function ContactPage() {
   return (
-    <PageTransition>
-      <div className="min-h-screen pt-16">
-        {/* Contact Section */}
-        <section className="py-20 px-4 clean-bg">
-          <div className="max-w-4xl mx-auto relative z-10">
-            <motion.h2
-              className="text-3xl md:text-4xl font-bold mb-10 text-center text-[var(--foreground-primary)]"
-              variants={itemVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              Get In Touch
-            </motion.h2>
+    <>
+      <Section padding="md" background="white">
+        <Heading level={1} align="center">
+          Get In Touch
+        </Heading>
+        <Text variant="lead" align="center" className="max-w-2xl mx-auto mb-12">
+          Have a project in mind or want to chat? I'd love to hear from you.
+        </Text>
 
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              transition={{
-                staggerChildren: 0.1,
-                delayChildren: 0.1,
-              }}
-            >
-              <motion.div
-                className="card bg-[var(--background-tertiary)] p-8 rounded-xl shadow-xl border border-[var(--border-color)]"
-                variants={cardVariants}
-              >
-                <motion.form
-                  className="space-y-6"
-                  variants={containerVariants}
-                  transition={{
-                    staggerChildren: 0.1,
-                    delayChildren: 0.1,
-                  }}
+        <Grid cols={1} colsMd={2} gap="lg" className="max-w-5xl mx-auto">
+          <div>
+            <Heading level={3}>Contact Information</Heading>
+            <Text>
+              Feel free to reach out using the form or through my contact
+              details below.
+            </Text>
+
+            <div className="mt-8 space-y-4">
+              <div>
+                <Text
+                  variant="small"
+                  className="uppercase font-sans tracking-wider"
                 >
-                  <motion.div variants={itemVariants}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <InputField
-                        label="Name"
-                        id="name"
-                        type="text"
-                        placeholder="Your name"
-                        required
-                      />
-                      <InputField
-                        label="Email"
-                        id="email"
-                        type="email"
-                        placeholder="Your email"
-                        required
-                      />
-                    </div>
-                  </motion.div>
-                  <motion.div variants={itemVariants}>
-                    <InputField
-                      label="Message"
-                      id="message"
-                      type="textarea"
-                      placeholder="Your message"
-                      required
-                      rows={5}
-                    />
-                  </motion.div>
-                  <motion.div variants={itemVariants}>
-                    <Button type="submit" variant="primary" className="w-full">
-                      Send Message
-                    </Button>
-                  </motion.div>
-                </motion.form>
-              </motion.div>
-            </motion.div>
+                  Email
+                </Text>
+                <a
+                  href="mailto:hello@example.com"
+                  className="text-lg block font-serif"
+                >
+                  hello@example.com
+                </a>
+              </div>
+
+              <div>
+                <Text
+                  variant="small"
+                  className="uppercase font-sans tracking-wider"
+                >
+                  Location
+                </Text>
+                <Text className="text-lg">New York, NY</Text>
+              </div>
+
+              <div>
+                <Text
+                  variant="small"
+                  className="uppercase font-sans tracking-wider"
+                >
+                  Social Media
+                </Text>
+                <div className="flex space-x-4 mt-2">
+                  <a
+                    href="https://twitter.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-black dark:text-white hover:opacity-70 transition-opacity"
+                  >
+                    Twitter
+                  </a>
+                  <a
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-black dark:text-white hover:opacity-70 transition-opacity"
+                  >
+                    LinkedIn
+                  </a>
+                  <a
+                    href="https://github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-black dark:text-white hover:opacity-70 transition-opacity"
+                  >
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-        </section>
-      </div>
-    </PageTransition>
+
+          <div>
+            <ContactForm />
+          </div>
+        </Grid>
+      </Section>
+    </>
   );
 }

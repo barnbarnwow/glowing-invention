@@ -1,5 +1,9 @@
-// Centralized image data for the entire site
-export const images = {
+import { ImageData } from './types';
+
+/**
+ * Centralized image data for the entire site
+ */
+export const images: ImageData = {
   // Profile and personal images
   profile: {
     main: "https://media.licdn.com/dms/image/v2/D5603AQE2sSPaKA0bFg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1681984465273?e=1746662400&v=beta&t=p0YA1OBiizuxGTHr2cOlIaRnoBoj-t_6fLbGzoTW6EE",

@@ -1,17 +1,10 @@
 import { images } from './imageData';
+import { Project } from './types';
 
-// Define the structure of a project
-export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  technologies: string[];
-  projectUrl: string;
-  imageUrl?: string;
-  featured?: boolean;
-}
-
-// Project data for the portfolio
+/**
+ * Project data for the portfolio
+ * Contains all project information displayed in the Projects section
+ */
 export const projects: Project[] = [
   {
     id: 'project1',
@@ -20,7 +13,9 @@ export const projects: Project[] = [
     technologies: ['React', 'Three.js', 'WebGL'],
     projectUrl: '#',
     imageUrl: images.projects.project1,
-    featured: true
+    featured: true,
+    category: 'Web Development',
+    completionDate: '2023-06'
   },
   {
     id: 'project2',
@@ -29,7 +24,9 @@ export const projects: Project[] = [
     technologies: ['Next.js', 'MongoDB', 'AWS S3'],
     projectUrl: '#',
     imageUrl: images.projects.project2,
-    featured: true
+    featured: true,
+    category: 'Full Stack',
+    completionDate: '2023-08'
   },
   {
     id: 'project3',
@@ -38,7 +35,9 @@ export const projects: Project[] = [
     technologies: ['TypeScript', 'Vue.js', 'Three.js'],
     projectUrl: '#',
     imageUrl: images.projects.project3,
-    featured: true
+    featured: true,
+    category: 'Design Tools',
+    completionDate: '2023-11'
   },
   // You can add more projects here
 ]; 

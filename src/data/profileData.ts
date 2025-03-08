@@ -1,17 +1,21 @@
 import { images } from './imageData';
+import { ProfileData } from './types';
 
-// Profile data for the portfolio
-export const profileData = {
+/**
+ * Profile data for the portfolio
+ * Contains all personal information displayed throughout the site
+ */
+export const profileData: ProfileData = {
   // Basic info
   name: "Barney Jesse",
   title: "Web Developer & Designer",
-  profileImage: images.profile.main, // Using the centralized image data
+  profileImage: images.profile.main,
   
   // Social media links
   socialMedia: [
-    { platform: "GitHub", url: "https://github.com/barnbarnwow" },
-    { platform: "LinkedIn", url: "https://www.linkedin.com/in/baranpas-jesse/" },
-    { platform: "Twitter", url: "https://twitter.com/yourusername" }
+    { platform: "GitHub", url: "https://github.com/barnbarnwow", icon: images.icons.github },
+    { platform: "LinkedIn", url: "https://www.linkedin.com/in/baranpas-jesse/", icon: images.icons.linkedin },
+    { platform: "Twitter", url: "https://twitter.com/yourusername", icon: images.icons.twitter }
   ],
   
   // Biography paragraphs - each item in the array is a new paragraph
@@ -54,7 +58,7 @@ export const profileData = {
     "Photography"
   ],
   
-  // Skills (optional - can be used in the skills page as well)
+  // Key technical and professional skills
   keySkills: [
     "JavaScript",
     "TypeScript",
