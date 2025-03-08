@@ -1,0 +1,27 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
+export const metadata: Metadata = {
+  title: "Your Name | Web Developer & Designer",
+  description:
+    "Personal portfolio website showcasing my projects and skills as a web developer and designer.",
+  // You can add more metadata here like open graph images, etc.
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className="scroll-smooth">
+      <body className="antialiased">
+        <Navbar />
+        <main className="overflow-hidden">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}
