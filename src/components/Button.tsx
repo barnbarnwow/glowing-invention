@@ -21,15 +21,15 @@ export default function Button({
   type = "button",
 }: ButtonProps) {
   // Define styles based on variant
-  const baseStyles = "font-medium py-3 px-6 rounded-lg transition-all";
+  const baseStyles = "font-medium py-3 px-6 rounded-md transition-all";
 
   const variantStyles = {
     primary:
       "gradient-accent text-white shadow-md hover:shadow-lg hover:translate-y-[-1px]",
     secondary:
-      "bg-[var(--background-tertiary)] hover:bg-[var(--background-secondary)] text-[var(--foreground-primary)] border border-[var(--border-color)] hover:translate-y-[-1px]",
+      "gradient-accent text-white shadow-md hover:shadow-lg hover:translate-y-[-1px]",
     outline:
-      "bg-transparent hover:bg-[var(--background-tertiary)] text-[var(--accent-primary)] border border-[var(--accent-primary)] hover:translate-y-[-1px]",
+      "gradient-accent text-white shadow-md hover:shadow-lg hover:translate-y-[-1px]",
   };
 
   const buttonStyles = `${baseStyles} ${variantStyles[variant]} ${className}`;

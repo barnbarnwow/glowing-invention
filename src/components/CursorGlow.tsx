@@ -11,13 +11,11 @@ interface MousePosition {
 }
 
 /**
- * CursorGlow component that creates a subtle light effect following the mouse
+ * CursorGlow component that creates a subtle light effect following the mouse with a trail
  */
 export default function CursorGlow() {
-  const [mousePosition, setMousePosition] = useState<MousePosition>({
-    x: 0,
-    y: 0,
-  });
+  const [primaryGlow, setPrimaryGlow] = useState<MousePosition>({ x: 0, y: 0 });
+  const [trailGlow, setTrailGlow] = useState<MousePosition>({ x: 0, y: 0 });
   const [targetPosition, setTargetPosition] = useState<MousePosition>({
     x: 0,
     y: 0,
@@ -34,9 +32,16 @@ export default function CursorGlow() {
     let animationFrameId: number;
 
     const animatePosition = () => {
-      setMousePosition((prev) => ({
-        x: prev.x + (targetPosition.x - prev.x) * 0.05, // Reduced speed factor from 0.1 to 0.05
-        y: prev.y + (targetPosition.y - prev.y) * 0.05,
+      // Update primary glow position (slightly faster than before - 0.08 instead of 0.05)
+      setPrimaryGlow((prev) => ({
+        x: prev.x + (targetPosition.x - prev.x) * 0.08,
+        y: prev.y + (targetPosition.y - prev.y) * 0.08,
+      }));
+
+      // Update trail glow position (follows the primary glow with a delay)
+      setTrailGlow((prev) => ({
+        x: prev.x + (primaryGlow.x - prev.x) * 0.05,
+        y: prev.y + (primaryGlow.y - prev.y) * 0.05,
       }));
 
       animationFrameId = requestAnimationFrame(animatePosition);
@@ -62,13 +67,28 @@ export default function CursorGlow() {
   }, [targetPosition]);
 
   return (
-    <div
-      className={`cursor-glow ${isActive ? "active" : ""}`}
-      style={{
-        left: `${mousePosition.x}px`,
-        top: `${mousePosition.y}px`,
-      }}
-      aria-hidden="true"
-    ></div>
+    <>
+      {/* Primary glow that follows cursor closely */}
+      <div
+        className={`cursor-glow ${isActive ? "active" : ""}`}
+        style={{
+          left: `${primaryGlow.x}px`,
+          top: `${primaryGlow.y}px`,
+          opacity: isActive ? 0.8 : 0,
+        }}
+      />
+
+      {/* Trail glow that follows with a delay */}
+      <div
+        className={`cursor-glow ${isActive ? "active" : ""}`}
+        style={{
+          left: `${trailGlow.x}px`,
+          top: `${trailGlow.y}px`,
+          opacity: isActive ? 0.4 : 0,
+          width: "calc(var(--glow-size) * 0.7)",
+          height: "calc(var(--glow-size) * 0.7)",
+        }}
+      />
+    </>
   );
 }
