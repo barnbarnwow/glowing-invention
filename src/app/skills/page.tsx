@@ -16,9 +16,20 @@ const SkillCard = ({ skill }: { skill: string }) => (
     className="bg-[var(--background-secondary)] p-6 rounded-lg shadow-sm text-center border border-[var(--border-color)] group"
     variants={cardVariants}
   >
-    <span className="text-lg font-medium text-[var(--foreground-secondary)] group-hover:text-[var(--accent-primary)] transition-colors">
-      {skill}
-    </span>
+    <motion.div
+      variants={containerVariants}
+      transition={{
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      }}
+    >
+      <motion.span
+        className="text-lg font-medium text-[var(--foreground-secondary)] group-hover:text-[var(--accent-primary)] transition-colors"
+        variants={itemVariants}
+      >
+        {skill}
+      </motion.span>
+    </motion.div>
   </motion.div>
 );
 
@@ -32,6 +43,8 @@ export default function SkillsPage() {
             <motion.h2
               className="text-3xl md:text-4xl font-bold mb-10 text-center text-[var(--foreground-primary)]"
               variants={itemVariants}
+              initial="hidden"
+              animate="visible"
             >
               My Skills
             </motion.h2>

@@ -15,8 +15,8 @@ export default function NotFound() {
         initial="hidden"
         animate="visible"
         transition={{
-          staggerChildren: 0.05,
-          delayChildren: 0.05,
+          staggerChildren: 0.1,
+          delayChildren: 0.1,
         }}
       >
         <div className="relative z-10">
@@ -39,10 +39,7 @@ export default function NotFound() {
             The page you're looking for doesn't exist or has been moved.
           </motion.p>
           <motion.div variants={itemVariants}>
-            <Link
-              href="/"
-              className="gradient-accent text-white font-medium py-3 px-6 rounded-lg transition-colors shadow-lg shadow-[var(--accent-primary)]/20 hover:shadow-[var(--accent-primary)]/30"
-            >
+            <Link href="/" className="standard-button lift-effect">
               Back to Home
             </Link>
           </motion.div>

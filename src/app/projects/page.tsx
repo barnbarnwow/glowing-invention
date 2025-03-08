@@ -17,6 +17,8 @@ export default function ProjectsPage() {
             <motion.h2
               className="text-3xl md:text-4xl font-bold mb-10 text-center text-[var(--foreground-primary)]"
               variants={itemVariants}
+              initial="hidden"
+              animate="visible"
             >
               My Projects
             </motion.h2>

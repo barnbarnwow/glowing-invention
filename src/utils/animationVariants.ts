@@ -10,8 +10,8 @@ export const pageVariants = {
   visible: {
     opacity: 1,
     transition: {
-      duration: 0.3,
-      ease: "easeInOut",
+      duration: 0.4,
+      ease: [0.25, 0.05, 0.35, 1],
       // Ensure animations propagate to children
       when: "beforeChildren",
     },
@@ -19,8 +19,8 @@ export const pageVariants = {
   exit: {
     opacity: 0,
     transition: {
-      duration: 0.15,
-      ease: "easeInOut",
+      duration: 0.2,
+      ease: [0.25, 0.05, 0.35, 1],
     },
   },
 };

@@ -21,6 +21,8 @@ export default function ContactPage() {
             <motion.h2
               className="text-3xl md:text-4xl font-bold mb-10 text-center text-[var(--foreground-primary)]"
               variants={itemVariants}
+              initial="hidden"
+              animate="visible"
             >
               Get In Touch
             </motion.h2>
@@ -38,7 +40,14 @@ export default function ContactPage() {
                 className="card bg-[var(--background-tertiary)] p-8 rounded-xl shadow-xl border border-[var(--border-color)]"
                 variants={cardVariants}
               >
-                <motion.form className="space-y-6" variants={containerVariants}>
+                <motion.form
+                  className="space-y-6"
+                  variants={containerVariants}
+                  transition={{
+                    staggerChildren: 0.1,
+                    delayChildren: 0.1,
+                  }}
+                >
                   <motion.div variants={itemVariants}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <InputField

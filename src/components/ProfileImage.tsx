@@ -6,7 +6,7 @@ import { profileData } from "@/data/profileData";
 import { motion } from "framer-motion";
 import {
   containerVariants,
-  itemVariantsReverse,
+  itemVariants,
   cardVariants,
 } from "@/utils/animationVariants";
 import Card from "./Card";
@@ -25,11 +25,15 @@ export default function ProfileImage() {
         <motion.div
           variants={containerVariants}
           className="contents" // Makes this div have no visual representation
+          transition={{
+            staggerChildren: 0.1,
+            delayChildren: 0.1,
+          }}
         >
           {/* Image container with animations from opposite direction */}
           <motion.div
             className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden bg-[var(--background-secondary)] shadow-lg mb-6 relative profile-image-static"
-            variants={itemVariantsReverse}
+            variants={itemVariants}
           >
             {profileData.profileImage ? (
               <Image
@@ -50,19 +54,19 @@ export default function ProfileImage() {
           </motion.div>
           <motion.h3
             className="text-2xl font-bold text-[var(--foreground-primary)] mb-3"
-            variants={itemVariantsReverse}
+            variants={itemVariants}
           >
             {profileData.name}
           </motion.h3>
           <motion.p
             className="text-[var(--foreground-secondary)] text-center mb-5"
-            variants={itemVariantsReverse}
+            variants={itemVariants}
           >
             {profileData.title}
           </motion.p>
           <motion.div
             className="flex justify-center space-x-5"
-            variants={itemVariantsReverse}
+            variants={itemVariants}
           >
             {profileData.socialMedia.map((social) => (
               <a
