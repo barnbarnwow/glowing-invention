@@ -8,7 +8,6 @@ import { containerVariants, itemVariants } from "@/utils/animationVariants";
 import BrutalistGrid from "@/components/BrutalistGrid";
 import BrutalistHeading from "@/components/BrutalistHeading";
 import BrutalistCard from "@/components/BrutalistCard";
-import BrutalistProgressBar from "@/components/BrutalistProgressBar";
 import BrutalistBulletList from "@/components/BrutalistBulletList";
 import BrutalistButton from "@/components/BrutalistButton";
 
@@ -173,11 +172,9 @@ export default function SkillsPage() {
                       {skill.level}
                     </div>
                     <div className="w-full h-4 border-2 border-[var(--foreground-primary)] relative">
-                      <motion.div
+                      <div
                         className="h-full bg-[var(--foreground-primary)]"
-                        initial={{ width: 0 }}
-                        animate={{ width: `${skill.percentage}%` }}
-                        transition={{ duration: 1, delay: 0.3 }}
+                        style={{ width: `${skill.percentage}%` }}
                       />
                     </div>
                     <div className="mt-2 text-right text-sm font-mono">
@@ -231,35 +228,6 @@ export default function SkillsPage() {
                   </div>
                 </BrutalistCard>
 
-                {/* Skills Development Approach Card */}
-                <BrutalistHeading level={2} withDivider={true}>
-                  Learning Approach
-                </BrutalistHeading>
-
-                <BrutalistCard
-                  className="mb-10"
-                  shadow="small"
-                  variant="tertiary"
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="border-2 border-[var(--foreground-primary)] p-4">
-                      <h3 className="text-xl mb-4">Depth Focus</h3>
-                      <p className="font-serif">
-                        I prioritize deep understanding of core technologies
-                        through focused practice and continuous refinement.
-                      </p>
-                    </div>
-
-                    <div className="border-2 border-[var(--foreground-primary)] p-4">
-                      <h3 className="text-xl mb-4">Breadth Expansion</h3>
-                      <p className="font-serif">
-                        I regularly explore complementary technologies to
-                        maintain versatility and adaptability.
-                      </p>
-                    </div>
-                  </div>
-                </BrutalistCard>
-
                 {/* Additional Skills - if there are more than 4 */}
                 {otherSkills.length > 0 && (
                   <>
@@ -267,16 +235,21 @@ export default function SkillsPage() {
                       Additional Proficiencies
                     </BrutalistHeading>
 
-                    <div className="space-y-4">
-                      {otherSkills.map((skill) => (
-                        <BrutalistProgressBar
-                          key={skill.skill}
-                          skill={skill.skill}
-                          level={skill.level}
-                          percentage={skill.percentage}
-                        />
-                      ))}
-                    </div>
+                    <BrutalistCard shadow="small" variant="tertiary">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {otherSkills.map((skill) => (
+                          <div
+                            key={skill.skill}
+                            className="border-2 border-[var(--foreground-primary)] p-3 flex justify-between items-center"
+                          >
+                            <span className="font-mono">{skill.skill}</span>
+                            <span className="text-[var(--foreground-tertiary)] text-sm">
+                              {skill.level}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </BrutalistCard>
                   </>
                 )}
               </motion.div>
@@ -292,11 +265,6 @@ export default function SkillsPage() {
                     <BrutalistHeading level={2} withDivider={true}>
                       Technical Expertise
                     </BrutalistHeading>
-
-                    <p className="text-[var(--foreground-secondary)] mb-6 font-serif">
-                      I specialize in modern web development technologies with a
-                      focus on creating responsive, performant applications.
-                    </p>
 
                     <div className="space-y-8">
                       {Object.entries(skillCategories).map(
