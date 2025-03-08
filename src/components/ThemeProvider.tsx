@@ -21,7 +21,6 @@ export function useTheme() {
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<ThemeType>("light");
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Initial theme setup
   useEffect(() => {
@@ -55,19 +54,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   // Toggle theme function
   const toggleTheme = () => {
-    setIsTransitioning(true);
-
     const newTheme = theme === "light" ? "dark" : "light";
 
     // Apply the theme change
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
     document.documentElement.setAttribute("data-theme", newTheme);
-
-    // After transition is complete, clear transition state
-    setTimeout(() => {
-      setIsTransitioning(false);
-    }, 300);
   };
 
   const value = {

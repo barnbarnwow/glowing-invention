@@ -3,12 +3,9 @@
 import Link from "next/link";
 import { profileData } from "@/data/profileData";
 import { motion } from "framer-motion";
-import { useTheme } from "./ThemeProvider";
 import { containerVariants, itemVariants } from "@/utils/animationVariants";
 
 export default function Hero() {
-  const { theme } = useTheme();
-
   return (
     <section className="h-screen flex items-center justify-center px-4 clean-bg">
       <motion.div
@@ -25,7 +22,7 @@ export default function Hero() {
           className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
           variants={itemVariants}
         >
-          Hi, I'm{" "}
+          Hi, I&apos;m{" "}
           <span className="text-[var(--accent-primary)] font-serif tracking-wide">
             {profileData.name}
           </span>

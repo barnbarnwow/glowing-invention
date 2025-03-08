@@ -36,7 +36,8 @@ export default function NotFound() {
             className="text-lg text-[var(--foreground-secondary)] mb-8 text-center max-w-md"
             variants={itemVariants}
           >
-            The page you're looking for doesn't exist or has been moved.
+            The page you&apos;re looking for doesn&apos;t exist or has been
+            moved.
           </motion.p>
           <motion.div variants={itemVariants}>
             <Link href="/" className="standard-button lift-effect">

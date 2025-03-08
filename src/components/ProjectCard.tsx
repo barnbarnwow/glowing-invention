@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   cardVariants,
@@ -41,12 +42,15 @@ export default function ProjectCard({
           style={{ willChange: "opacity" }}
         >
           {imageUrl ? (
-            <img
-              src={imageUrl}
-              alt={title}
-              className="object-cover w-full h-full"
-              loading="lazy"
-            />
+            <div className="relative w-full h-full">
+              <Image
+                src={imageUrl}
+                alt={title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+            </div>
           ) : (
             <div className="text-4xl text-[var(--foreground-tertiary)]">
               {title.charAt(0).toUpperCase()}

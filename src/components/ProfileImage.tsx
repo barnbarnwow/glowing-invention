@@ -9,7 +9,6 @@ import {
   itemVariantsReverse,
   cardVariants,
 } from "@/utils/animationVariants";
-import Card from "./Card";
 
 export default function ProfileImage() {
   // Check if the image is an external URL or local path

@@ -17,8 +17,6 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production', // Remove console in production
   },
-  // Enable swcMinify for better performance
-  swcMinify: true,
 };
 
 export default nextConfig;

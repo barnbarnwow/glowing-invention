@@ -4,11 +4,7 @@ import React, { useMemo } from "react";
 import PageTransition from "@/components/PageTransition";
 import { profileData } from "@/data/profileData";
 import { motion } from "framer-motion";
-import {
-  containerVariants,
-  cardVariants,
-  itemVariants,
-} from "@/utils/animationVariants";
+import { containerVariants, itemVariants } from "@/utils/animationVariants";
 import SkillCategory from "@/components/SkillCategory";
 import ProgressBar from "@/components/ProgressBar";
 import BulletItem from "@/components/BulletItem";
@@ -124,9 +120,9 @@ export default function SkillsPage() {
               animate="visible"
               transition={{ delay: 0.1 }}
             >
-              I've acquired a diverse set of skills throughout my journey as a
-              developer. Here's a breakdown of my technical expertise and
-              competencies.
+              I&apos;ve acquired a diverse set of skills throughout my journey
+              as a developer. Here&apos;s a breakdown of my technical expertise
+              and competencies.
             </motion.p>
 
             <motion.div
@@ -185,9 +181,9 @@ export default function SkillsPage() {
                 </h2>
                 <Card className="p-6 rounded-xl">
                   <p className="text-[var(--foreground-secondary)] mb-4">
-                    I'm constantly expanding my skillset to stay current with
-                    industry trends and emerging technologies. My approach to
-                    learning is both hands-on and theoretical, ensuring a
+                    I&apos;m constantly expanding my skillset to stay current
+                    with industry trends and emerging technologies. My approach
+                    to learning is both hands-on and theoretical, ensuring a
                     well-rounded understanding of new concepts.
                   </p>
 
