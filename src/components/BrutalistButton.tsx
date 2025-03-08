@@ -57,7 +57,7 @@ export default function BrutalistButton({
 
   // Base styles
   let buttonClasses =
-    "border-2 border-[var(--foreground-primary)] relative tracking-wider text-center";
+    "brutalist-border brutalist-transition tracking-wider text-center";
 
   if (fullWidth) {
     buttonClasses += " w-full";
@@ -98,7 +98,7 @@ export default function BrutalistButton({
       whileTap="tap"
       onClick={onClick}
       style={{
-        boxShadow: "4px 4px 0 var(--foreground-secondary)",
+        boxShadow: "var(--shadow-default) var(--foreground-secondary)",
         transformOrigin: "center center",
       }}
     >

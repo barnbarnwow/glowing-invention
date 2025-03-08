@@ -9,63 +9,32 @@
   --foreground-primary: #000000;
   --foreground-secondary: #333333;
   --foreground-tertiary: #666666;
-  --accent-primary: #000000;    /* Black accent for brutalism */
-  --accent-secondary: #333333;  /* Dark gray */
-  --accent-tertiary: #f1f1f1;   /* Light gray */
-  --border-color: #000000;      /* Solid black borders */
-  --success-color: #000000;     /* Monochromatic for brutalist aesthetic */
-  --error-color: #000000;
-  --warning-color: #000000;
+  --border-color: #000000;
   
   /* Font families */
   --font-serif: 'EB Garamond', Georgia, serif;
   --font-sans: 'Bebas Neue', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   
   /* Animation variables */
-  --page-transition-duration: 0.3s;
-  --theme-transition-duration: 0.3s;
-  
-  /* Hover effect variables - for consistency */
-  --hover-transition-duration: 0.2s;
-  --hover-transition-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --hover-offset-x: -4px;
-  --hover-offset-y: -4px;
-  --hover-shadow-offset: 6px;
-  --default-shadow-offset: 4px;
+  --transition-duration: 0.2s;
+  --transition-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --hover-offset: -4px;
+  --shadow-default: 4px 4px 0;
+  --shadow-hover: 6px 6px 0;
 }
 
-@theme inline {
-  --color-background: var(--background-primary);
-  --color-foreground: var(--foreground-primary);
-  --font-sans: var(--font-sans);
-  --font-serif: var(--font-serif);
-}
-
-/* Dark mode with data-theme attribute */
+/* Dark mode */
 html[data-theme="dark"] {
-  --background-primary: #0a0a0a;       /* Almost black */
-  --background-secondary: #1a1a1a;     /* Very dark gray */
-  --background-tertiary: #2a2a2a;      /* Dark gray */
-  --foreground-primary: #ffffff;       /* White text */
-  --foreground-secondary: #cccccc;     /* Light gray */
-  --foreground-tertiary: #999999;      /* Medium gray */
-  --accent-primary: #ffffff;           /* White accent for brutalism */
-  --accent-secondary: #cccccc;         /* Light gray */
-  --accent-tertiary: #333333;          /* Dark gray */
-  --border-color: #ffffff;             /* Solid white borders */
-  --success-color: #ffffff;
-  --error-color: #ffffff;
-  --warning-color: #ffffff;
+  --background-primary: #0a0a0a;
+  --background-secondary: #1a1a1a;
+  --background-tertiary: #2a2a2a;
+  --foreground-primary: #ffffff;
+  --foreground-secondary: #cccccc;
+  --foreground-tertiary: #999999;
+  --border-color: #ffffff;
 }
 
-/* Perspective container for page transitions */
-.perspective {
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  transition: all var(--page-transition-duration) cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Keep the media query as a fallback */
+/* Fallback for browser preference */
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) {
     --background-primary: #0a0a0a;
@@ -74,262 +43,81 @@ html[data-theme="dark"] {
     --foreground-primary: #ffffff;
     --foreground-secondary: #cccccc;
     --foreground-tertiary: #999999;
-    --accent-primary: #ffffff;
-    --accent-secondary: #cccccc;
-    --accent-tertiary: #333333;
     --border-color: #ffffff;
-    --success-color: #ffffff;
-    --error-color: #ffffff;
-    --warning-color: #ffffff;
   }
 }
 
-/* Main background */
+/* Base styles */
 body {
   background: var(--background-primary);
   color: var(--foreground-primary);
   font-family: var(--font-sans);
   font-weight: 400;
   letter-spacing: 0.04em;
-  position: relative;
   line-height: 1.3;
 }
 
-/* Make sure main content doesn't hide the glow */
 main {
   background: transparent !important;
-  position: relative;
-  z-index: 1;
   max-width: 1600px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-/* Typography styling - exaggerated for Bebas Neue */
+/* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
   font-weight: 400;
-  letter-spacing: 0.05em; /* Increased for brutalist effect */
-  text-transform: uppercase; /* All caps for brutalist impact */
-  position: relative;
-  z-index: 5;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   margin-bottom: 1.5rem;
-  line-height: 0.95; /* Extra tight for brutalist effect */
+  line-height: 0.95;
 }
 
-h1 {
-  font-size: 5rem; /* Exaggerated size */
-}
+h1 { font-size: 5rem; }
+h2 { font-size: 3.5rem; }
+h3 { font-size: 2.5rem; }
 
-h2 {
-  font-size: 3.5rem;
-}
-
-h3 {
-  font-size: 2.5rem;
-}
-
-/* Set paragraph text to use serif font for contrast with headers */
 p, span, li {
   font-family: var(--font-serif);
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.5;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-/* Use Bebas Neue for navigation, buttons, etc. */
 a, button, nav, .text-sm, .text-xs {
   font-family: var(--font-sans);
-  letter-spacing: 0.05em; /* Exaggerated letter spacing */
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
-/* Clean transparent background class */
-.clean-bg {
-  background-color: transparent !important;
-  position: relative;
-}
-
-/* Button styles - brutalist approach */
-.btn {
-  padding: 0.75rem 1.5rem;
+/* Common element styles */
+.brutalist-border {
   border: 2px solid var(--foreground-primary);
-  background: transparent;
-  color: var(--foreground-primary);
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 5;
-  transition: all var(--hover-transition-duration) var(--hover-transition-ease);
-  border-radius: 0; /* Square corners for brutalist design */
-  box-shadow: var(--default-shadow-offset) var(--default-shadow-offset) 0 var(--foreground-secondary);
+  border-radius: 0;
 }
 
-.btn-primary {
-  background-color: var(--foreground-primary);
-  color: var(--background-primary);
+.brutalist-shadow {
+  box-shadow: var(--shadow-default) var(--foreground-secondary);
 }
 
-.btn-primary:hover {
-  transform: translate(var(--hover-offset-x), var(--hover-offset-y));
-  box-shadow: var(--hover-shadow-offset) var(--hover-shadow-offset) 0 var(--foreground-secondary);
+.brutalist-transition {
+  transition: all var(--transition-duration) var(--transition-ease);
 }
 
-/* Standardized animations for all components */
-.animate-on-hover {
-  transition: all var(--hover-transition-duration) var(--hover-transition-ease);
+.brutalist-hover:hover {
+  transform: translate(var(--hover-offset), var(--hover-offset));
+  box-shadow: var(--shadow-hover) var(--foreground-secondary);
 }
 
-.animate-on-hover:hover {
-  transform: translate(var(--hover-offset-x), var(--hover-offset-y));
-}
-
-.animate-on-hover:focus-visible {
-  outline: 2px solid var(--accent-primary);
-  outline-offset: 2px;
-}
-
-/* Card component style - brutalist approach */
-.card {
+/* Card style */
+.card, .brutalist-card {
   background-color: var(--background-tertiary);
-  border: 2px solid var(--foreground-primary);
-  border-radius: 0; /* Square corners for brutalist design */
-  overflow: hidden;
-  transition: all var(--hover-transition-duration) var(--hover-transition-ease);
-  position: relative;
-  z-index: 5;
-  box-shadow: var(--default-shadow-offset) var(--default-shadow-offset) 0 var(--foreground-secondary);
   padding: 1.5rem;
 }
 
-.card:hover {
-  transform: translate(var(--hover-offset-x), var(--hover-offset-y));
-  box-shadow: var(--hover-shadow-offset) var(--hover-shadow-offset) 0 var(--foreground-secondary);
-}
-
-/* Lift effect for hover - more pronounced */
-.lift-effect {
-  transition: transform var(--hover-transition-duration) var(--hover-transition-ease), 
-              box-shadow var(--hover-transition-duration) var(--hover-transition-ease);
-  will-change: transform;
-  position: relative;
-  z-index: 5;
-  box-shadow: var(--default-shadow-offset) var(--default-shadow-offset) 0 var(--foreground-secondary);
-}
-
-.lift-effect:hover {
-  transform: translate(var(--hover-offset-x), var(--hover-offset-y));
-  box-shadow: var(--hover-shadow-offset) var(--hover-shadow-offset) 0 var(--foreground-secondary);
-}
-
-/* Standard button styles - brutalist approach */
-.standard-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 1.5rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background-color: var(--foreground-primary);
-  color: var(--background-primary);
-  transition: all var(--hover-transition-duration) var(--hover-transition-ease);
-  border: 2px solid var(--foreground-primary);
-  border-radius: 0; /* Square corners for brutalist design */
-  box-shadow: var(--default-shadow-offset) var(--default-shadow-offset) 0 var(--foreground-secondary);
-}
-
-.standard-button:hover {
-  transform: translate(var(--hover-offset-x), var(--hover-offset-y));
-  box-shadow: var(--hover-shadow-offset) var(--hover-shadow-offset) 0 var(--foreground-secondary);
-}
-
-.standard-button.outline {
-  background-color: transparent;
-  color: var(--foreground-primary);
-  border: 2px solid var(--foreground-primary);
-}
-
-.standard-button.outline:hover {
-  background-color: var(--foreground-primary);
-  color: var(--background-primary);
-}
-
-/* Profile image styling - brutalist approach */
-.profile-image {
-  position: relative;
-  border-radius: 0; /* Square for brutalist design */
-  overflow: hidden;
-  border: 2px solid var(--foreground-primary);
-  box-shadow: var(--default-shadow-offset) var(--default-shadow-offset) 0 var(--foreground-secondary);
-  transition: all var(--hover-transition-duration) var(--hover-transition-ease);
-}
-
-.profile-image:hover {
-  transform: translate(var(--hover-offset-x), var(--hover-offset-y));
-  box-shadow: var(--hover-shadow-offset) var(--hover-shadow-offset) 0 var(--foreground-secondary);
-}
-
-/* All sections should be transparent */
-section {
-  background: transparent !important;
-  padding: 4rem 0;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-/* Theme toggle button styling */
-.theme-toggle {
-  cursor: pointer;
-  border: 2px solid var(--foreground-primary);
-  background: transparent;
-  color: var(--foreground-primary);
-  transition: all var(--hover-transition-duration) var(--hover-transition-ease);
-  width: 40px;
-  height: 40px;
-  padding: 0.5rem;
-  border-radius: 0; /* Square for brutalist design */
-  position: relative;
-  z-index: 10;
-  box-shadow: var(--default-shadow-offset) var(--default-shadow-offset) 0 var(--foreground-secondary);
-}
-
-.theme-toggle:hover {
-  transform: translate(var(--hover-offset-x), var(--hover-offset-y));
-  box-shadow: var(--hover-shadow-offset) var(--hover-shadow-offset) 0 var(--foreground-secondary);
-}
-
-.theme-toggle svg {
-  transition: all var(--hover-transition-duration) var(--hover-transition-ease);
-  width: 24px;
-  height: 24px;
-}
-
-.theme-toggle:active svg {
-  transform: scale(0.9);
-}
-
-/* Theme transition effect */
-*, ::before, ::after {
-  transition-property: background-color, border-color, fill, stroke, transform, box-shadow;
-  transition-duration: 0.2s;
-  transition-timing-function: var(--hover-transition-ease);
-}
-
-/* Grid and layout helpers */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 2rem;
-  width: 100%;
-}
-
-/* Brutalist dividers */
+/* Divider */
 .brutalist-divider {
   height: 4px;
   background-color: var(--foreground-primary);
@@ -337,7 +125,33 @@ section {
   width: 100%;
 }
 
-/* Brutalist lists */
+/* Button styles */
+.btn, .standard-button {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: var(--foreground-primary);
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary, .standard-button:not(.outline) {
+  background-color: var(--foreground-primary);
+  color: var(--background-primary);
+}
+
+.btn-outline, .standard-button.outline {
+  background-color: transparent;
+  color: var(--foreground-primary);
+}
+
+.btn-outline:hover, .standard-button.outline:hover {
+  background-color: var(--foreground-primary);
+  color: var(--background-primary);
+}
+
+/* List styles */
 .brutalist-list {
   list-style: none;
   padding: 0;
@@ -347,7 +161,6 @@ section {
 .brutalist-list li {
   padding: 0.75rem 0;
   border-bottom: 1px solid var(--foreground-tertiary);
-  position: relative;
 }
 
 .brutalist-list li:last-child {
@@ -355,46 +168,14 @@ section {
 }
 
 /* Typography utility classes */
-.text-huge {
-  font-size: 8rem;
-  line-height: 0.9;
-  letter-spacing: 0.05em;
-}
-
-.text-uppercase {
-  text-transform: uppercase;
-}
-
-.tracking-brutalist {
-  letter-spacing: 0.08em;
-}
-
-/* Special text styles */
-.text-outlined {
-  -webkit-text-stroke: 1px var(--foreground-primary);
-  color: transparent;
-}
+.text-huge { font-size: 8rem; line-height: 0.9; }
+.text-outlined { -webkit-text-stroke: 1px var(--foreground-primary); color: transparent; }
+.tracking-brutalist { letter-spacing: 0.08em; }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  h1 {
-    font-size: 3.5rem;
-  }
-  
-  h2 {
-    font-size: 2.5rem;
-  }
-  
-  h3 {
-    font-size: 2rem;
-  }
-  
-  .text-huge {
-    font-size: 4rem;
-  }
-  
-  .grid-container {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-  }
+  h1 { font-size: 3.5rem; }
+  h2 { font-size: 2.5rem; }
+  h3 { font-size: 2rem; }
+  .text-huge { font-size: 4rem; }
 } 

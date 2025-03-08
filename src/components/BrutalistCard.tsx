@@ -41,11 +41,8 @@ export default function BrutalistCard({
     },
   };
 
-  // Determine default shadow size
-  let shadowSize = "4px 4px 0";
-
-  // Shadow size variations only affect the initial state,
-  // hover will always be 6px 6px for consistency
+  // Determine shadow size
+  let shadowSize = "var(--shadow-default)";
   if (shadow === "small") {
     shadowSize = "3px 3px 0";
   } else if (shadow === "large") {
@@ -62,7 +59,7 @@ export default function BrutalistCard({
 
   return (
     <motion.div
-      className={`border-2 border-[var(--foreground-primary)] relative p-6 ${className}`}
+      className={`brutalist-border brutalist-transition ${className}`}
       style={{
         boxShadow: `${shadowSize} var(--foreground-secondary)`,
         backgroundColor: bgColor,
