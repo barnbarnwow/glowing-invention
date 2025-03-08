@@ -26,13 +26,13 @@ export const profileData = {
       degree: "Bachelor of Science in Business Administration",
       institution: "Missouri Southern State University",
       years: "2021-2022",
-      description: "Member of Phi Sigma Pi National Honor Fraternity and National Society of Leadership and Success"
+      description: "Member of The Phi Sigma Pi National Honor Fraternity and The National Society of Leadership and Success"
     },
     {
       degree: "Associate's Degree in Business Administration",
       institution: "Crowder College",
       years: "2020-2021",
-      description: "Member of International Club"
+      description: "Member of The International Club"
     },
     // Add more education items as needed
     // {

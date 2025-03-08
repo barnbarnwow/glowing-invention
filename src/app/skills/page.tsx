@@ -28,8 +28,8 @@ export default function SkillsPage() {
     <PageTransition>
       <div className="min-h-screen pt-16">
         {/* Skills Section */}
-        <section className="py-20 px-4 gradient-primary">
-          <div className="max-w-4xl mx-auto">
+        <section className="py-20 px-4 gradient-soft">
+          <div className="max-w-4xl mx-auto relative z-10">
             <motion.h2
               className="text-3xl md:text-4xl font-bold mb-10 text-center text-[var(--foreground-primary)]"
               variants={itemVariants}

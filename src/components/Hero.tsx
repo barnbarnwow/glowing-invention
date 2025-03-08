@@ -11,9 +11,9 @@ export default function Hero() {
   const { theme } = useTheme();
 
   return (
-    <section className="h-screen flex items-center justify-center px-4 texture">
+    <section className="h-screen flex items-center justify-center px-4 gradient-deep">
       <motion.div
-        className="max-w-4xl mx-auto text-center"
+        className="max-w-4xl mx-auto text-center relative z-10"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
