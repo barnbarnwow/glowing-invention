@@ -9,7 +9,7 @@ import Card from "./Card";
 
 export default function BiographyContent() {
   return (
-    <Card useProximityBorder={true} className="p-0">
+    <Card useProximityBorder={true} className="p-0" liftEffect={true}>
       <motion.div
         className="p-8 h-full"
         variants={containerVariants}
@@ -92,7 +92,7 @@ export default function BiographyContent() {
                 {profileData.interests.map((interest) => (
                   <motion.span
                     key={interest}
-                    className="px-3 py-1 bg-[var(--accent-tertiary)]/10 text-[var(--accent-primary)] rounded-full text-sm"
+                    className="px-3 py-1 bg-[var(--accent-tertiary)]/10 text-[var(--accent-primary)] rounded-full text-sm sunken-effect"
                     variants={itemVariants}
                     whileHover={{ scale: 1.03 }}
                   >

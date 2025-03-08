@@ -9,6 +9,7 @@ interface CardProps {
   useProximityBorder?: boolean;
   proximityThreshold?: number;
   levels?: number;
+  liftEffect?: boolean;
 }
 
 /**
@@ -20,9 +21,16 @@ export default function Card({
   useProximityBorder = true,
   proximityThreshold = 150,
   levels = 10,
+  liftEffect = true,
 }: CardProps) {
   const cardContent = (
-    <div className={`card animate-on-hover ${className}`}>{children}</div>
+    <div
+      className={`card animate-on-hover ${
+        liftEffect ? "lift-effect" : ""
+      } ${className}`}
+    >
+      {children}
+    </div>
   );
 
   if (!useProximityBorder) {

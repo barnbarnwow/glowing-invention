@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { profileData } from "@/data/profileData";
-import Button from "../components/Button";
 import { motion } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
 import { containerVariants, itemVariants } from "@/utils/animationVariants";
@@ -50,15 +49,15 @@ export default function Hero() {
           className="flex flex-wrap gap-4 justify-center"
           variants={itemVariants}
         >
-          <Button href="/about" variant="primary">
+          <Link href="/about" className="standard-button">
             About Me
-          </Button>
-          <Button href="/projects" variant="primary">
+          </Link>
+          <Link href="/projects" className="standard-button">
             View My Work
-          </Button>
-          <Button href="/contact" variant="primary">
+          </Link>
+          <Link href="/contact" className="standard-button">
             Contact Me
-          </Button>
+          </Link>
         </motion.div>
       </motion.div>
     </section>

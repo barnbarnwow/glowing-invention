@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { cardVariants } from "@/utils/animationVariants";
 import ProximityBorder from "./BorderGlowWrapper";
 import Card from "./Card";
-import Button from "./Button";
 
 interface ProjectCardProps {
   title: string;
@@ -26,7 +25,7 @@ export default function ProjectCard({
   return (
     <ProximityBorder proximityThreshold={150} levels={10}>
       <motion.div
-        className="card border-0 bg-[var(--background-tertiary)] rounded-xl overflow-hidden shadow-lg animate-on-hover"
+        className="card border-0 bg-[var(--background-tertiary)] rounded-xl overflow-hidden shadow-lg animate-on-hover lift-effect"
         variants={cardVariants}
         whileHover={{ y: -1, transition: { duration: 0.2 } }}
       >
@@ -61,12 +60,7 @@ export default function ProjectCard({
               </span>
             ))}
           </div>
-          <Button
-            href={projectUrl}
-            variant="outline"
-            className="py-2 px-4"
-            useProximityEffect={false}
-          >
+          <Link href={projectUrl} className="standard-button outline">
             View Project
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +76,7 @@ export default function ProjectCard({
                 d="M14 5l7 7m0 0l-7 7m7-7H3"
               />
             </svg>
-          </Button>
+          </Link>
         </div>
       </motion.div>
     </ProximityBorder>
