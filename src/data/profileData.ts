@@ -16,7 +16,7 @@ export const profileData = {
   
   // Biography paragraphs - each item in the array is a new paragraph
   bioParagraphs: [
-    "Hello! I'm a passionate web developer with a focus on creating beautiful, functional, and user-friendly websites. With expertise in modern frameworks like Next.js, I build responsive applications that deliver exceptional user experiences.",
+    "Hey! I’m a web developer—which basically means I turn coffee into websites that people actually enjoy using (shocking, I know). I specialize in Next.js, creating responsive apps that look good on every device… at least according to my mom."
     "When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying the outdoors. I'm always looking for new challenges and opportunities to grow as a developer."
   ],
   
