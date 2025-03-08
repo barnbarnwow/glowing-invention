@@ -25,9 +25,15 @@ interface SkillProficiency {
   percentage: number;
 }
 
+// Define BusinessSkill type
+interface BusinessSkillsGroup {
+  category: string;
+  skills: string[];
+}
+
 export default function SkillsPage() {
   // Get skills from profileData
-  const { keySkills, interests } = profileData;
+  const { keySkills, interests, businessSkills } = profileData;
 
   // Use memoization for category mapping to avoid recalculation on re-renders
   const skillCategories: SkillCategoryMap = useMemo(() => {
@@ -72,6 +78,9 @@ export default function SkillsPage() {
       { skill: "HTML/CSS", level: "Advanced", percentage: 88 },
       { skill: "Python", level: "Intermediate", percentage: 65 },
       { skill: "Git", level: "Advanced", percentage: 78 },
+      { skill: "Project Management", level: "Advanced", percentage: 85 },
+      { skill: "Business Analysis", level: "Advanced", percentage: 82 },
+      { skill: "Marketing Strategy", level: "Intermediate", percentage: 75 },
     ];
 
     // Filter to only include skills from keySkills
@@ -83,6 +92,8 @@ export default function SkillsPage() {
     "Modern frontend architecture patterns",
     "Performance optimization techniques",
     "Advanced animation and interaction design",
+    "Business strategy in tech environments",
+    "Client-focused development practices",
   ];
 
   // Memoize relevant interests to avoid recalculation
@@ -153,6 +164,45 @@ export default function SkillsPage() {
                   </motion.div>
                 </motion.div>
               )}
+
+              {/* Business Skills Section */}
+              <motion.div className="mb-12" variants={itemVariants}>
+                <h2 className="text-2xl font-medium mb-6 text-[var(--foreground-primary)]">
+                  Business Skills
+                </h2>
+                <p className="text-[var(--foreground-secondary)] mb-6">
+                  With a background in Business Administration, I bring a unique
+                  blend of technical and business acumen to my development
+                  projects, ensuring solutions that are not only technically
+                  sound but also aligned with business objectives.
+                </p>
+                <motion.div
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                  variants={containerVariants}
+                >
+                  {businessSkills.map((skillGroup: BusinessSkillsGroup) => (
+                    <Card key={skillGroup.category} className="p-6 rounded-xl">
+                      <h3 className="text-xl font-medium mb-4 text-[var(--foreground-primary)]">
+                        {skillGroup.category}
+                      </h3>
+                      <div className="space-y-2">
+                        {skillGroup.skills.map((skill) => (
+                          <motion.div
+                            key={skill}
+                            className="flex items-center space-x-2"
+                            variants={itemVariants}
+                          >
+                            <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)]"></span>
+                            <span className="text-[var(--foreground-secondary)]">
+                              {skill}
+                            </span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </Card>
+                  ))}
+                </motion.div>
+              </motion.div>
 
               {/* Skill Proficiency - Only render if we have proficiencies */}
               {skillProficiencies.length > 0 && (

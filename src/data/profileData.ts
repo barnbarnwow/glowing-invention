@@ -65,8 +65,50 @@ export const profileData = {
     "HTML/CSS",
     "Git",
     "Python",
-    "Statistical Analysis",
-    "Business Analytics",
-    "Technology Integration"
+    "Statistics",
+    "Marketing",
+    "Analytics",
+    "Automation",
+    "Project Management",
+    "Team Leadership",
+    "Strategic Planning",
+    "Client Relations",
+    "Business Analysis",
+    "Marketing Strategy",
+    "Financial Analysis"
+  ],
+  
+  // Business skills categorized
+  businessSkills: [
+    {
+      category: "Business Management",
+      skills: [
+        "Project Management",
+        "Team Leadership",
+        "Strategic Planning",
+        "Time Management",
+        "Resource Allocation"
+      ]
+    },
+    {
+      category: "Client & Customer Relations",
+      skills: [
+        "Client Communication",
+        "Stakeholder Management",
+        "Requirement Gathering",
+        "Expectation Management",
+        "Customer Support"
+      ]
+    },
+    {
+      category: "Analysis & Strategy",
+      skills: [
+        "Business Analysis",
+        "Marketing Strategy",
+        "Financial Analysis",
+        "Data-Driven Decision Making",
+        "Market Research"
+      ]
+    }
   ]
 }; 
