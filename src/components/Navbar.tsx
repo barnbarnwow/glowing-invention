@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
-import NavbarGlow from "./NavbarGlow";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,19 +36,14 @@ export default function Navbar() {
     { name: "Contact", path: "/contact" },
   ];
 
-  // Determine if we're on the home page for special styling
-  const isHomePage = pathname === "/";
-
   return (
     <nav
       className={`fixed w-full z-20 transition-all duration-300 ${
-        isScrolled || !isHomePage
-          ? "bg-[var(--background-tertiary)] bg-opacity-60 shadow-md backdrop-blur-sm border-b border-[var(--border-color)]"
+        isScrolled
+          ? "bg-[var(--background-tertiary)] bg-opacity-30 backdrop-blur-sm border-b border-[var(--border-color)]"
           : "bg-transparent"
       } relative overflow-visible`}
     >
-      <NavbarGlow />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex justify-between h-16 items-center">
           {/* Logo/Brand */}
@@ -78,14 +72,16 @@ export default function Navbar() {
             </div>
 
             {/* Theme Toggle Button */}
-            <div className="ml-6">
+            <div className="ml-6 relative group">
               <ThemeToggle />
             </div>
           </div>
 
           {/* Mobile Menu Button and Theme Toggle */}
-          <div className="md:hidden flex items-center space-x-2">
-            <ThemeToggle />
+          <div className="md:hidden flex items-center space-x-4">
+            <div className="relative group">
+              <ThemeToggle />
+            </div>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-[var(--foreground-secondary)] hover:text-[var(--accent-primary)] focus:outline-none"
@@ -131,7 +127,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div className={`${isMenuOpen ? "block" : "hidden"} md:hidden`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[var(--background-tertiary)] bg-opacity-80 backdrop-blur-sm shadow-lg border-t border-[var(--border-color)]">
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[var(--background-tertiary)] bg-opacity-50 backdrop-blur-sm shadow-lg border-t border-[var(--border-color)]">
           {navItems.map((item) => (
             <Link
               key={item.name}

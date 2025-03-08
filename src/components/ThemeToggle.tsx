@@ -7,8 +7,8 @@ import { useTheme } from "./ThemeProvider";
 const LightModeIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="22"
-    height="22"
+    width="24"
+    height="24"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -37,8 +37,8 @@ const LightModeIcon = () => (
 const DarkModeIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="22"
-    height="22"
+    width="24"
+    height="24"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -71,10 +71,10 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
       title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-      className="theme-toggle relative group"
+      className="theme-toggle"
     >
       {theme === "light" ? <DarkModeIcon /> : <LightModeIcon />}
-      <span className="absolute -bottom-5 right-0 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity bg-[var(--background-tertiary)] text-[var(--accent-primary)] px-2 py-1 rounded shadow-sm whitespace-nowrap">
+      <span className="absolute -bottom-6 right-0 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity bg-[var(--background-tertiary)] text-[var(--accent-primary)] px-2 py-1 rounded shadow-sm whitespace-nowrap">
         {theme === "light" ? "Dark Mode" : "Light Mode"}
       </span>
     </button>

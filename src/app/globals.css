@@ -121,26 +121,6 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
 }
 
-/* Inverted glow for navbar */
-.navbar-glow {
-  position: absolute;
-  width: 25vw;
-  height: 25vw;
-  background: radial-gradient(circle, transparent 0%, var(--glow-color-dark) 50%, var(--glow-color-light) 80%);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: -1; /* Negative z-index to place behind navbar content */
-  filter: blur(40px);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  will-change: transform, left, top;
-}
-
-.navbar-glow.active {
-  opacity: 0.5;
-}
-
 /* Clean transparent background class */
 .clean-bg {
   background-color: transparent !important;
@@ -198,13 +178,13 @@ section {
 .theme-toggle {
   cursor: pointer;
   border: none;
-  background: transparent;
+  background: transparent !important;
   color: var(--foreground-secondary);
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem;
+  padding: 0;
   border-radius: 9999px;
   position: relative;
   z-index: 10;
@@ -212,7 +192,7 @@ section {
 
 .theme-toggle:hover {
   color: var(--accent-primary);
-  background-color: var(--background-secondary);
+  background-color: transparent !important;
   transform: scale(1.1);
 }
 
