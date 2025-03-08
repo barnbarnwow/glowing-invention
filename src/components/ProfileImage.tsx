@@ -16,7 +16,7 @@ export default function ProfileImage() {
 
   return (
     <motion.div
-      className="card bg-[var(--background-tertiary)] rounded-xl overflow-hidden shadow-lg"
+      className="brutalist-card brutalist-border brutalist-shadow"
       variants={cardVariants}
       style={{ willChange: "opacity" }}
     >
@@ -28,7 +28,7 @@ export default function ProfileImage() {
         >
           {/* Image container with elegant fade-in animation */}
           <motion.div
-            className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden bg-[var(--background-secondary)] shadow-lg mb-6 relative profile-image-static"
+            className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden bg-[var(--background-secondary)] mb-6 relative brutalist-border brutalist-shadow"
             variants={itemVariantsReverse}
             style={{ willChange: "opacity" }}
           >
@@ -41,24 +41,24 @@ export default function ProfileImage() {
                 className="object-cover"
                 style={{ objectPosition: "center" }}
                 priority
-                unoptimized={isExternalImage} // Disable Next.js optimization for external URLs
+                unoptimized={isExternalImage}
                 loading="eager"
                 fetchPriority="high"
               />
             ) : (
-              <div className="w-full h-full flex items-center justify-center text-[var(--foreground-tertiary)]">
+              <div className="w-full h-full flex items-center justify-center">
                 Profile Image
               </div>
             )}
           </motion.div>
           <motion.h3
-            className="text-2xl font-bold text-[var(--foreground-primary)] mb-3"
+            className="text-2xl mb-3 tracking-brutalist"
             variants={itemVariantsReverse}
           >
             {profileData.name}
           </motion.h3>
           <motion.p
-            className="text-[var(--foreground-secondary)] text-center mb-5"
+            className="text-center mb-5 font-serif"
             variants={itemVariantsReverse}
           >
             {profileData.title}
@@ -71,7 +71,7 @@ export default function ProfileImage() {
               <a
                 key={social.platform}
                 href={social.url}
-                className="text-[var(--foreground-tertiary)] hover:text-[var(--accent-primary)] transition-colors"
+                className="brutalist-transition hover:text-[var(--foreground-primary)]"
                 target="_blank"
                 rel="noopener noreferrer"
               >

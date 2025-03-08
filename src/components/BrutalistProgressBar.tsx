@@ -58,8 +58,7 @@ export default function BrutalistProgressBar({
 
   return (
     <motion.div
-      className="mb-6 last:mb-0 border-2 border-[var(--foreground-primary)] p-4"
-      style={{ boxShadow: "4px 4px 0 var(--foreground-secondary)" }}
+      className="mb-6 last:mb-0 brutalist-border brutalist-shadow p-4"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -67,14 +66,14 @@ export default function BrutalistProgressBar({
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-3">
         <h3 className="text-xl mb-1 md:mb-0">{skill}</h3>
         <div className="flex items-center space-x-3">
-          <span className="font-mono text-[var(--foreground-primary)] tracking-wider">
+          <span className="font-mono tracking-brutalist">
             {getLevelIndicator()}
           </span>
           <span className="text-[var(--foreground-tertiary)]">{level}</span>
         </div>
       </div>
 
-      <div className="relative w-full h-8 border-2 border-[var(--foreground-primary)] bg-[var(--background-tertiary)]">
+      <div className="relative w-full h-8 brutalist-border bg-[var(--background-tertiary)]">
         <motion.div
           className="h-full bg-[var(--foreground-primary)]"
           variants={barVariants}

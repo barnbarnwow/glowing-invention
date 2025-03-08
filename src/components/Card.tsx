@@ -10,7 +10,7 @@ interface CardProps {
 
 /**
  * Standard Card component with optional lift effect
- * More minimalistic approach with subtle animations
+ * Using brutalist design system classes
  */
 export default function Card({
   children,
@@ -19,8 +19,8 @@ export default function Card({
 }: CardProps) {
   return (
     <div
-      className={`card animate-on-hover ${
-        liftEffect ? "lift-effect" : ""
+      className={`brutalist-card brutalist-border brutalist-shadow brutalist-transition ${
+        liftEffect ? "brutalist-hover" : ""
       } ${className}`}
     >
       {children}

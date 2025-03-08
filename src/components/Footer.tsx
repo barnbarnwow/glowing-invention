@@ -5,16 +5,16 @@ import { profileData } from "@/data/profileData";
 
 export default function Footer() {
   return (
-    <footer className="py-6 px-4 bg-[var(--background-primary)] text-[var(--foreground-primary)] border-t border-[var(--border-color)]">
+    <footer className="py-6 px-4 bg-[var(--background-primary)] border-t-2 border-[var(--foreground-primary)]">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Left Section - Copyright & Credit */}
           <div className="text-left mb-4 md:mb-0">
-            <p className="text-xs text-[var(--foreground-tertiary)]">
+            <p className="text-xs text-[var(--foreground-tertiary)] font-serif">
               © {new Date().getFullYear()} {profileData.name}. All rights
               reserved.
             </p>
-            <p className="text-xs text-[var(--foreground-tertiary)] mt-1">
+            <p className="text-xs text-[var(--foreground-tertiary)] mt-1 font-serif">
               Crafted with Next.js & Tailwind CSS
             </p>
           </div>
@@ -25,31 +25,31 @@ export default function Footer() {
               <nav className="flex flex-wrap justify-end gap-5 text-sm">
                 <Link
                   href="/"
-                  className="text-[var(--foreground-secondary)] hover:text-[var(--foreground-primary)] transition-colors"
+                  className="brutalist-transition hover:text-[var(--foreground-primary)]"
                 >
                   Home
                 </Link>
                 <Link
                   href="/about"
-                  className="text-[var(--foreground-secondary)] hover:text-[var(--foreground-primary)] transition-colors"
+                  className="brutalist-transition hover:text-[var(--foreground-primary)]"
                 >
                   About
                 </Link>
                 <Link
                   href="/projects"
-                  className="text-[var(--foreground-secondary)] hover:text-[var(--foreground-primary)] transition-colors"
+                  className="brutalist-transition hover:text-[var(--foreground-primary)]"
                 >
                   Projects
                 </Link>
                 <Link
                   href="/skills"
-                  className="text-[var(--foreground-secondary)] hover:text-[var(--foreground-primary)] transition-colors"
+                  className="brutalist-transition hover:text-[var(--foreground-primary)]"
                 >
                   Skills
                 </Link>
                 <Link
                   href="/contact"
-                  className="text-[var(--foreground-secondary)] hover:text-[var(--foreground-primary)] transition-colors"
+                  className="brutalist-transition hover:text-[var(--foreground-primary)]"
                 >
                   Contact
                 </Link>
@@ -63,7 +63,7 @@ export default function Footer() {
                   <a
                     key={social.platform}
                     href={social.url}
-                    className="text-[var(--foreground-secondary)] hover:text-[var(--foreground-primary)] transition-colors text-sm"
+                    className="brutalist-transition hover:text-[var(--foreground-primary)] text-sm"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

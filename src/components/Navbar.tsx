@@ -26,14 +26,10 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex justify-between items-center h-full">
           {/* Logo/Brand */}
-          <div className="flex-shrink-0 text-3xl tracking-widest">
+          <div className="flex-shrink-0 text-3xl tracking-brutalist">
             <Link href="/" className="text-[var(--foreground-primary)]">
-              <span className="text-[var(--foreground-primary)] font-sans">
-                Barney
-              </span>
-              <span className="text-[var(--foreground-primary)] font-sans">
-                Jesse
-              </span>
+              <span className="font-sans">Barney</span>
+              <span className="font-sans">Jesse</span>
             </Link>
           </div>
 
@@ -61,11 +57,10 @@ export default function Navbar() {
           <div className="md:hidden flex items-center">
             <div
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 border-2 border-[var(--foreground-primary)] cursor-pointer"
+              className="inline-flex items-center justify-center p-2 brutalist-border brutalist-shadow brutalist-transition cursor-pointer"
               style={{
                 width: "40px",
                 height: "40px",
-                boxShadow: "4px 4px 0 var(--foreground-secondary)",
               }}
             >
               <span className="sr-only">Open main menu</span>

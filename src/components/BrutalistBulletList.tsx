@@ -38,13 +38,9 @@ export default function BrutalistBulletList({
 
   return (
     <div className={`${className}`}>
-      {title && (
-        <h4 className="text-[var(--foreground-primary)] mb-3 text-lg">
-          {title}
-        </h4>
-      )}
+      {title && <h4 className="text-lg mb-3 tracking-brutalist">{title}</h4>}
       <motion.ul
-        className="border-l-4 border-[var(--foreground-primary)] pl-4"
+        className="brutalist-list border-l-4 border-[var(--foreground-primary)] pl-4"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -55,12 +51,8 @@ export default function BrutalistBulletList({
             className="mb-3 last:mb-0 flex"
             variants={itemVariants}
           >
-            <span className="inline-block w-6 text-[var(--foreground-primary)] font-mono mr-2">
-              &#9642;
-            </span>
-            <span className="text-[var(--foreground-secondary)] font-serif">
-              {item}
-            </span>
+            <span className="inline-block w-6 font-mono mr-2">&#9642;</span>
+            <span className="font-serif">{item}</span>
           </motion.li>
         ))}
       </motion.ul>

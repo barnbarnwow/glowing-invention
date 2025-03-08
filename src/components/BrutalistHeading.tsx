@@ -35,7 +35,7 @@ export default function BrutalistHeading({
   };
 
   // Base classes for all headings
-  let headingClasses = "tracking-brutalist font-sans";
+  let headingClasses = "tracking-brutalist";
 
   // Add alignment classes
   if (align === "center") {
@@ -54,19 +54,11 @@ export default function BrutalistHeading({
 
   // Generate the appropriate heading tag based on level
   const renderHeading = () => {
-    const headingStyles = outlined
-      ? {
-          WebkitTextStroke: "1px var(--foreground-primary)",
-          color: "transparent",
-        }
-      : {};
-
     switch (level) {
       case 1:
         return (
           <motion.h1
             className={`text-6xl md:text-huge mb-6 ${headingClasses}`}
-            style={headingStyles}
             variants={animate ? headingVariants : undefined}
           >
             {children}
@@ -76,7 +68,6 @@ export default function BrutalistHeading({
         return (
           <motion.h2
             className={`text-4xl md:text-5xl mb-6 ${headingClasses}`}
-            style={headingStyles}
             variants={animate ? headingVariants : undefined}
           >
             {children}
@@ -86,7 +77,6 @@ export default function BrutalistHeading({
         return (
           <motion.h3
             className={`text-3xl md:text-4xl mb-4 ${headingClasses}`}
-            style={headingStyles}
             variants={animate ? headingVariants : undefined}
           >
             {children}
@@ -96,7 +86,6 @@ export default function BrutalistHeading({
         return (
           <motion.h4
             className={`text-2xl md:text-3xl mb-4 ${headingClasses}`}
-            style={headingStyles}
             variants={animate ? headingVariants : undefined}
           >
             {children}
@@ -106,7 +95,6 @@ export default function BrutalistHeading({
         return (
           <motion.h5
             className={`text-xl md:text-2xl mb-3 ${headingClasses}`}
-            style={headingStyles}
             variants={animate ? headingVariants : undefined}
           >
             {children}
@@ -117,7 +105,6 @@ export default function BrutalistHeading({
         return (
           <motion.h6
             className={`text-lg md:text-xl mb-3 ${headingClasses}`}
-            style={headingStyles}
             variants={animate ? headingVariants : undefined}
           >
             {children}
