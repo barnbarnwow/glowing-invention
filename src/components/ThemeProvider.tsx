@@ -21,9 +21,13 @@ export function useTheme() {
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<ThemeType>("light");
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Initial theme setup
   useEffect(() => {
+    // Add no-transition class to prevent flash on page load
+    document.documentElement.classList.add("no-transition");
+
     // Check if theme is stored in localStorage
     const storedTheme = localStorage.getItem("theme") as ThemeType | null;
 
@@ -41,16 +45,29 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       setTheme(systemPreference);
       document.documentElement.setAttribute("data-theme", systemPreference);
     }
+
+    // Remove no-transition class after a short delay
+    setTimeout(() => {
+      document.documentElement.classList.remove("no-transition");
+      document.documentElement.classList.add("theme-transition");
+    }, 100);
   }, []);
 
   // Toggle theme function
   const toggleTheme = () => {
+    setIsTransitioning(true);
+
     const newTheme = theme === "light" ? "dark" : "light";
 
     // Apply the theme change
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
     document.documentElement.setAttribute("data-theme", newTheme);
+
+    // After transition is complete, clear transition state
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 300);
   };
 
   const value = {

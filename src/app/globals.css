@@ -20,6 +20,10 @@
   /* Font families */
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Animation variables */
+  --page-transition-duration: 0.3s;
+  --theme-transition-duration: 0.3s;
 }
 
 @theme inline {
@@ -44,6 +48,13 @@ html[data-theme="dark"] {
   --success-color: #059669;
   --error-color: #dc2626;
   --warning-color: #d97706;
+}
+
+/* Perspective container for page transitions */
+.perspective {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: all var(--page-transition-duration) cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Keep the media query as a fallback */
@@ -142,13 +153,13 @@ h1, h2, h3, h4, h5, h6 {
 html[data-theme="dark"] .btn-primary, 
 html[data-theme="dark"] .card, 
 html[data-theme="dark"] .gradient-accent {
-  box-shadow: none !important;
+  box-shadow: 0 0 0 transparent;
 }
 
 html[data-theme="dark"] .btn-primary:hover, 
 html[data-theme="dark"] .card:hover, 
 html[data-theme="dark"] .gradient-accent:hover {
-  box-shadow: none !important;
+  box-shadow: 0 0 0 transparent;
 }
 
 /* Card component style */
@@ -160,6 +171,7 @@ html[data-theme="dark"] .gradient-accent:hover {
   position: relative;
   z-index: 5;
   border: 1px solid var(--border-color);
+  /* Standardized box-shadow with transparent fallback for dark mode */
   box-shadow: 
     0 1px 3px rgba(0, 0, 0, 0.05),
     0 1px 2px rgba(0, 0, 0, 0.03),
@@ -168,35 +180,40 @@ html[data-theme="dark"] .gradient-accent:hover {
 
 .card:hover {
   transform: translateY(-1px);
+  /* Standardized box-shadow with transparent fallback for dark mode */
   box-shadow: 
     0 4px 6px -1px rgba(0, 0, 0, 0.08),
     0 2px 4px -1px rgba(0, 0, 0, 0.06),
     0 0 0 1px rgba(0, 0, 0, 0.02);
 }
 
-/* 3D Lift Effect for components */
+/* Lift effect for hover */
 .lift-effect {
-  transition: all 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  position: relative;
+  z-index: 5;
 }
 
 .lift-effect:hover {
-  transform: translateY(-2px);
+  transform: translateY(-5px);
   box-shadow: 
-    0 10px 15px -3px rgba(0, 0, 0, 0.08),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05),
-    0 0 0 1px rgba(0, 0, 0, 0.02);
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* Sunken Effect */
+/* Sunken effect for hover */
 .sunken-effect {
-  transition: all 0.3s ease;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  position: relative;
+  z-index: 5;
 }
 
 .sunken-effect:hover {
+  transform: translateY(2px);
   box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.1),
-    inset 0 3px 2px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
     0 0 0 1px rgba(0, 0, 0, 0.02);
 }
 
@@ -284,20 +301,22 @@ section {
   background: transparent !important;
 }
 
-/* Theme toggle button styles */
+/* Theme toggle button styling */
 .theme-toggle {
   cursor: pointer;
   border: none;
   background: transparent;
   color: var(--foreground-secondary);
   transition: color 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 40px;
+  height: 40px;
   padding: 0.5rem;
   border-radius: 9999px;
   position: relative;
   z-index: 10;
+  /* Prevent any size changes by making sure there's no border or outline */
+  outline: none;
+  box-shadow: none !important;
 }
 
 .theme-toggle:hover {
@@ -306,6 +325,8 @@ section {
 
 .theme-toggle svg {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 24px;
+  height: 24px;
 }
 
 .theme-toggle:active svg {
@@ -329,28 +350,61 @@ h1, h2, h3, h4, h5, h6, p, span, a, button {
 
 /* Dark mode shadow adjustments */
 html[data-theme="dark"] .lift-effect:hover {
-  box-shadow: 
-    0 10px 15px -3px rgba(0, 0, 0, 0.25),
-    0 4px 6px -2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0 transparent;
+  /* Keep the same transform to ensure identical sizing */
+  transform: translateY(-5px);
 }
 
-/* Static Profile image styling without hover effects */
+/* Profile image static (no animation) */
 .profile-image-static {
   position: relative;
+  display: block;
   border-radius: 50%;
   overflow: hidden;
   border: 1px solid var(--border-color);
 }
 
 .profile-image-static::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  box-shadow: inset 0 0 0 1px var(--accent-primary);
-  border-radius: 50%;
-  opacity: 0.3;
-  z-index: 1;
+  content: "";
+  display: none;
+}
+
+/* Theme transition class for smooth light/dark switching */
+.theme-transition {
+  transition: background-color var(--theme-transition-duration) ease,
+              color var(--theme-transition-duration) ease,
+              border-color var(--theme-transition-duration) ease,
+              box-shadow var(--theme-transition-duration) ease;
+}
+
+/* Prevent transition on page load */
+.no-transition * {
+  transition: none !important;
+}
+
+/* Theme toggle button styled for the footer */
+.theme-toggle-footer {
+  cursor: pointer;
+  border: none;
+  background-color: var(--background-tertiary);
+  color: var(--foreground-secondary);
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.theme-toggle-footer:hover {
+  color: var(--accent-primary);
+  transform: translateY(-1px);
+}
+
+.theme-toggle-footer svg {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 24px;
+  height: 24px;
 } 

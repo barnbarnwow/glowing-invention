@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Footer() {
   return (
@@ -57,9 +58,15 @@ export default function Footer() {
             </Link>
           </nav>
         </div>
-        <p className="text-[var(--foreground-tertiary)]">
-          © {new Date().getFullYear()} Your Name. All rights reserved.
-        </p>
+        <div className="flex flex-col items-center justify-center mb-4">
+          {/* Theme Toggle */}
+          <div className="mb-4">
+            <ThemeToggle />
+          </div>
+          <p className="text-[var(--foreground-tertiary)]">
+            © {new Date().getFullYear()} Your Name. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );

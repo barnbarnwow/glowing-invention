@@ -1,31 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-
-  // Handle scroll effect for navbar background
-  useEffect(() => {
-    // Set initial state based on scroll position (in case page is refreshed while scrolled)
-    setIsScrolled(window.scrollY > 10);
-
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Navigation items with their routes
   const navItems = [
@@ -38,14 +19,11 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full z-20 transition-all duration-300 ${
-        isScrolled
-          ? "bg-[var(--background-tertiary)] bg-opacity-30 backdrop-blur-sm border-b border-[var(--border-color)]"
-          : "bg-transparent"
-      } relative overflow-visible`}
+      className="fixed w-full z-20 bg-transparent h-16 relative overflow-visible"
+      style={{ height: "64px" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex justify-between h-16 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 h-full">
+        <div className="flex justify-between items-center h-full">
           {/* Logo/Brand */}
           <div className="flex-shrink-0 font-bold text-xl">
             <Link href="/" className="text-[var(--foreground-primary)]">
@@ -54,8 +32,8 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center">
-            <div className="ml-10 flex items-center space-x-8">
+          <div className="hidden md:flex md:items-center h-full">
+            <div className="ml-10 flex items-center space-x-8 h-full">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -65,25 +43,21 @@ export default function Navbar() {
                       ? "text-[var(--accent-primary)]"
                       : "text-[var(--foreground-secondary)] hover:text-[var(--accent-primary)]"
                   }`}
+                  style={{ lineHeight: "1.5rem", padding: "0.5rem 0.75rem" }}
                 >
                   {item.name}
                 </Link>
               ))}
             </div>
-
-            {/* Theme Toggle Button */}
-            <div className="ml-6">
-              <ThemeToggle />
-            </div>
           </div>
 
-          {/* Mobile Menu Button and Theme Toggle */}
-          <div className="md:hidden flex items-center space-x-4">
-            <ThemeToggle />
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-[var(--foreground-secondary)] hover:text-[var(--accent-primary)] focus:outline-none"
               aria-expanded="false"
+              style={{ width: "40px", height: "40px" }}
             >
               <span className="sr-only">Open main menu</span>
               {/* Icon when menu is closed */}
@@ -125,7 +99,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div className={`${isMenuOpen ? "block" : "hidden"} md:hidden`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[var(--background-tertiary)] bg-opacity-50 backdrop-blur-sm shadow-lg border-t border-[var(--border-color)]">
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[var(--background-tertiary)] bg-opacity-70 backdrop-blur-sm shadow-lg">
           {navItems.map((item) => (
             <Link
               key={item.name}
@@ -136,6 +110,7 @@ export default function Navbar() {
                   : "text-[var(--foreground-secondary)] hover:text-[var(--accent-primary)]"
               }`}
               onClick={() => setIsMenuOpen(false)}
+              style={{ padding: "0.5rem 0.75rem" }}
             >
               {item.name}
             </Link>

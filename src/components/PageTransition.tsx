@@ -16,6 +16,10 @@ export default function PageTransition({ children }: PageTransitionProps) {
       exit="exit"
       variants={pageVariants}
       className="min-h-screen"
+      style={{
+        willChange: "opacity, transform",
+        isolation: "isolate",
+      }}
     >
       {children}
     </motion.div>

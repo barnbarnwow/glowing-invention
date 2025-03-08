@@ -14,21 +14,20 @@ export default function BiographyContent() {
     <motion.div
       className="card bg-[var(--background-tertiary)] rounded-xl overflow-hidden shadow-lg"
       variants={cardVariants}
+      style={{ willChange: "opacity" }}
+      whileHover={{
+        y: -2,
+        transition: { duration: 0.2, ease: "easeOut" },
+      }}
     >
-      <motion.div
-        className="p-8 h-full"
-        variants={containerVariants}
-        transition={{
-          staggerChildren: 0.1,
-          delayChildren: 0.1,
-        }}
-      >
+      <motion.div className="p-8 h-full" variants={containerVariants}>
         {/* Map through biography paragraphs */}
         {profileData.bioParagraphs.map((paragraph, index) => (
           <motion.p
             key={index}
             className="text-lg text-[var(--foreground-secondary)] mb-4"
             variants={itemVariants}
+            style={{ willChange: "opacity" }}
           >
             {paragraph}
           </motion.p>
@@ -39,6 +38,7 @@ export default function BiographyContent() {
           <motion.div
             className="pt-4 border-t border-[var(--border-color)] mt-6"
             variants={itemVariants}
+            style={{ willChange: "opacity" }}
           >
             <motion.h3
               className="text-xl font-semibold mb-3 text-[var(--foreground-primary)]"
@@ -72,6 +72,7 @@ export default function BiographyContent() {
           <motion.div
             className="pt-4 border-t border-[var(--border-color)] mt-6"
             variants={itemVariants}
+            style={{ willChange: "opacity" }}
           >
             <motion.h3
               className="text-xl font-semibold mb-3 text-[var(--foreground-primary)]"
@@ -86,7 +87,7 @@ export default function BiographyContent() {
               {profileData.interests.map((interest) => (
                 <motion.span
                   key={interest}
-                  className="px-3 py-1 bg-[var(--accent-tertiary)]/10 text-[var(--accent-primary)] rounded-full text-sm sunken-effect"
+                  className="px-3 py-1 bg-[var(--accent-tertiary)]/10 text-[var(--accent-primary)] rounded-full text-sm"
                   variants={itemVariants}
                 >
                   {interest}

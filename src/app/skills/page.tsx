@@ -13,18 +13,13 @@ import {
 // Skill Card Component
 const SkillCard = ({ skill }: { skill: string }) => (
   <motion.div
-    className="bg-[var(--background-secondary)] p-6 rounded-lg shadow-sm text-center border border-[var(--border-color)] group"
+    className="bg-[var(--background-secondary)] p-6 rounded-lg shadow-sm text-center border border-[var(--border-color)]"
     variants={cardVariants}
+    style={{ willChange: "transform, opacity" }}
   >
-    <motion.div
-      variants={containerVariants}
-      transition={{
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
-      }}
-    >
+    <motion.div variants={containerVariants}>
       <motion.span
-        className="text-lg font-medium text-[var(--foreground-secondary)] group-hover:text-[var(--accent-primary)] transition-colors"
+        className="text-lg font-medium text-[var(--foreground-secondary)]"
         variants={itemVariants}
       >
         {skill}
@@ -54,10 +49,7 @@ export default function SkillsPage() {
               variants={cardVariants}
               initial="hidden"
               animate="visible"
-              transition={{
-                staggerChildren: 0.1,
-                delayChildren: 0.1,
-              }}
+              style={{ willChange: "transform, opacity" }}
             >
               <motion.div
                 className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"

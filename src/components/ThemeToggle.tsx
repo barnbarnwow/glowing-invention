@@ -71,12 +71,23 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
       title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-      className="theme-toggle relative group"
+      className="theme-toggle-footer group"
     >
-      {theme === "light" ? <DarkModeIcon /> : <LightModeIcon />}
-      <span className="absolute -bottom-6 right-0 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity bg-[var(--background-tertiary)] text-[var(--accent-primary)] px-2 py-1 rounded shadow-sm whitespace-nowrap">
-        {theme === "light" ? "Dark Mode" : "Light Mode"}
-      </span>
+      <div className="flex items-center justify-center">
+        <div
+          style={{
+            width: "24px",
+            height: "24px",
+            display: "flex",
+            marginRight: "8px",
+          }}
+        >
+          {theme === "light" ? <DarkModeIcon /> : <LightModeIcon />}
+        </div>
+        <span className="text-sm font-medium text-[var(--foreground-secondary)]">
+          {theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
+        </span>
+      </div>
     </button>
   );
 }
