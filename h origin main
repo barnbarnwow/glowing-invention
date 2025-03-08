@@ -1,7 +1,0 @@
-[33mcommit 679a07029d48a446f4faa7f8b627d6075b0eabf3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
-Author: Baranpas <barneyjesse@gmail.com>
-Date:   Sat Mar 8 00:51:41 2025 -0600
-
-    Updated Styling, enhanced light mode and dark mode
-    
-    - Added custom theme toggle button with smooth transition between modes\n- Implemented standardized animations across all pages\n- Created reusable animation variants for consistent user experience\n- Enhanced project cards with custom images and matching descriptions\n- Improved CSS styling for better visual hierarchy\n- Optimized animation timing for smoother transitions\n- Added specialized animations for profile and biography sections\n- Created directory structure for project images

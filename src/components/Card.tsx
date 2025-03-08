@@ -6,15 +6,32 @@ import ProximityBorder from "./BorderGlowWrapper";
 interface CardProps {
   children: ReactNode;
   className?: string;
+  useProximityBorder?: boolean;
+  proximityThreshold?: number;
+  levels?: number;
 }
 
 /**
- * Card component with border that changes color intensity based on mouse proximity
+ * Standard Card component with optional proximity border effect
  */
-export default function Card({ children, className = "" }: CardProps) {
+export default function Card({
+  children,
+  className = "",
+  useProximityBorder = true,
+  proximityThreshold = 150,
+  levels = 10,
+}: CardProps) {
+  const cardContent = (
+    <div className={`card animate-on-hover ${className}`}>{children}</div>
+  );
+
+  if (!useProximityBorder) {
+    return cardContent;
+  }
+
   return (
-    <ProximityBorder proximityThreshold={150} levels={5}>
-      <div className={`card ${className}`}>{children}</div>
+    <ProximityBorder proximityThreshold={proximityThreshold} levels={levels}>
+      {cardContent}
     </ProximityBorder>
   );
 }

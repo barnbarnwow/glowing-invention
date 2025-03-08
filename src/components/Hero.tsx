@@ -27,7 +27,7 @@ export default function Hero() {
           variants={itemVariants}
         >
           Hi, I'm{" "}
-          <span className="text-[var(--accent-primary)] italic">
+          <span className="text-[var(--accent-primary)] font-serif tracking-wide">
             {profileData.name}
           </span>
         </motion.h1>
@@ -53,10 +53,10 @@ export default function Hero() {
           <Button href="/about" variant="primary">
             About Me
           </Button>
-          <Button href="/projects" variant="secondary">
+          <Button href="/projects" variant="primary">
             View My Work
           </Button>
-          <Button href="/contact" variant="outline">
+          <Button href="/contact" variant="primary">
             Contact Me
           </Button>
         </motion.div>
