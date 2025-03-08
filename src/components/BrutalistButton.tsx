@@ -12,6 +12,7 @@ interface BrutalistButtonProps {
   size?: "small" | "medium" | "large";
   className?: string;
   animate?: boolean;
+  fullWidth?: boolean;
 }
 
 export default function BrutalistButton({
@@ -22,6 +23,7 @@ export default function BrutalistButton({
   size = "medium",
   className = "",
   animate = true,
+  fullWidth = false,
 }: BrutalistButtonProps) {
   const buttonVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -34,8 +36,8 @@ export default function BrutalistButton({
       },
     },
     hover: {
-      x: -2,
-      y: -2,
+      x: -4,
+      y: -4,
       boxShadow: "6px 6px 0 var(--foreground-secondary)",
       transition: {
         duration: 0.2,
@@ -54,7 +56,12 @@ export default function BrutalistButton({
   };
 
   // Base styles
-  let buttonClasses = "border-2 border-[var(--foreground-primary)] relative";
+  let buttonClasses =
+    "border-2 border-[var(--foreground-primary)] relative tracking-wider text-center";
+
+  if (fullWidth) {
+    buttonClasses += " w-full";
+  }
 
   // Size styles
   if (size === "small") {
@@ -101,7 +108,11 @@ export default function BrutalistButton({
 
   if (href) {
     return (
-      <Link href={href} passHref className="block w-fit">
+      <Link
+        href={href}
+        passHref
+        className={fullWidth ? "block w-full" : "block w-fit"}
+      >
         {button}
       </Link>
     );

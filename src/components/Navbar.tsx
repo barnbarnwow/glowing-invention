@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import BrutalistButton from "./BrutalistButton";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,40 +39,33 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center h-full">
-            <div className="ml-10 flex items-center space-x-10 h-full">
+            <div className="ml-10 flex items-center space-x-6 h-full">
               {navItems.map((item) => (
-                <Link
+                <BrutalistButton
                   key={item.name}
                   href={item.path}
-                  className={`px-3 py-1 text-lg tracking-wider transition-all relative ${
-                    pathname === item.path
-                      ? "text-[var(--background-primary)] bg-[var(--foreground-primary)]"
-                      : "text-[var(--foreground-primary)] hover:translate-y(-2px)"
-                  }`}
-                  style={{
-                    boxShadow:
-                      pathname === item.path
-                        ? "none"
-                        : "3px 3px 0 var(--foreground-secondary)",
-                    border: "2px solid var(--foreground-primary)",
-                  }}
+                  size="small"
+                  variant={pathname === item.path ? "primary" : "outline"}
+                  animate={false}
+                  className={
+                    pathname === item.path ? "!py-1 !px-3" : "!py-1 !px-3"
+                  }
                 >
                   {item.name}
-                </Link>
+                </BrutalistButton>
               ))}
             </div>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            <button
+            <div
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 border-2 border-[var(--foreground-primary)]"
-              aria-expanded="false"
+              className="inline-flex items-center justify-center p-2 border-2 border-[var(--foreground-primary)] cursor-pointer"
               style={{
                 width: "40px",
                 height: "40px",
-                boxShadow: "3px 3px 0 var(--foreground-secondary)",
+                boxShadow: "4px 4px 0 var(--foreground-secondary)",
               }}
             >
               <span className="sr-only">Open main menu</span>
@@ -107,33 +101,25 @@ export default function Navbar() {
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
-            </button>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
       <div className={`${isMenuOpen ? "block" : "hidden"} md:hidden`}>
-        <div className="px-4 pt-2 pb-3 space-y-3 border-t-2 border-[var(--foreground-primary)] bg-[var(--background-primary)]">
+        <div className="px-4 pt-4 pb-4 space-y-4 border-t-2 border-[var(--foreground-primary)] bg-[var(--background-primary)]">
           {navItems.map((item) => (
-            <Link
+            <BrutalistButton
               key={item.name}
               href={item.path}
-              className={`block px-3 py-2 text-base tracking-wider ${
-                pathname === item.path
-                  ? "text-[var(--background-primary)] bg-[var(--foreground-primary)]"
-                  : "text-[var(--foreground-primary)] border-2 border-[var(--foreground-primary)]"
-              }`}
-              style={{
-                boxShadow:
-                  pathname === item.path
-                    ? "none"
-                    : "3px 3px 0 var(--foreground-secondary)",
-              }}
+              variant={pathname === item.path ? "primary" : "outline"}
+              animate={false}
+              fullWidth={true}
               onClick={() => setIsMenuOpen(false)}
             >
               {item.name}
-            </Link>
+            </BrutalistButton>
           ))}
         </div>
       </div>
