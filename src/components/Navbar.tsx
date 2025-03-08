@@ -72,16 +72,14 @@ export default function Navbar() {
             </div>
 
             {/* Theme Toggle Button */}
-            <div className="ml-6 relative group">
+            <div className="ml-6">
               <ThemeToggle />
             </div>
           </div>
 
           {/* Mobile Menu Button and Theme Toggle */}
           <div className="md:hidden flex items-center space-x-4">
-            <div className="relative group">
-              <ThemeToggle />
-            </div>
+            <ThemeToggle />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-[var(--foreground-secondary)] hover:text-[var(--accent-primary)] focus:outline-none"

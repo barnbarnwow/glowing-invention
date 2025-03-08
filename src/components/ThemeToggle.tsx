@@ -71,7 +71,7 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
       title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-      className="theme-toggle"
+      className="theme-toggle relative group"
     >
       {theme === "light" ? <DarkModeIcon /> : <LightModeIcon />}
       <span className="absolute -bottom-6 right-0 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity bg-[var(--background-tertiary)] text-[var(--accent-primary)] px-2 py-1 rounded shadow-sm whitespace-nowrap">
