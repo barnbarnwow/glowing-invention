@@ -25,11 +25,11 @@ export default function Button({
 
   const variantStyles = {
     primary:
-      "gradient-accent text-white shadow-md hover:shadow-lg hover:translate-y-[-2px]",
+      "gradient-accent text-white shadow-md hover:shadow-lg hover:translate-y-[-1px]",
     secondary:
-      "bg-[var(--background-tertiary)] hover:bg-[var(--background-secondary)] text-[var(--foreground-primary)] border border-[var(--border-color)] hover:translate-y-[-2px]",
+      "bg-[var(--background-tertiary)] hover:bg-[var(--background-secondary)] text-[var(--foreground-primary)] border border-[var(--border-color)] hover:translate-y-[-1px]",
     outline:
-      "bg-transparent hover:bg-[var(--background-tertiary)] text-[var(--accent-primary)] border border-[var(--accent-primary)] hover:translate-y-[-2px]",
+      "bg-transparent hover:bg-[var(--background-tertiary)] text-[var(--accent-primary)] border border-[var(--accent-primary)] hover:translate-y-[-1px]",
   };
 
   const buttonStyles = `${baseStyles} ${variantStyles[variant]} ${className}`;

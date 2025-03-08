@@ -15,7 +15,7 @@ const LightModeIcon = () => (
     strokeWidth="1.75"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="rotate-0 transform transition-transform duration-500"
+    className="transition-transform duration-500"
   >
     {/* Outer circle */}
     <circle cx="12" cy="12" r="8" />
@@ -45,7 +45,7 @@ const DarkModeIcon = () => (
     strokeWidth="1.75"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="rotate-180 transform transition-transform duration-500"
+    className="rotate-180 transition-transform duration-500"
   >
     {/* Outer circle */}
     <circle cx="12" cy="12" r="8" />
