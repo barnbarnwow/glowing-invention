@@ -35,16 +35,16 @@
 
 /* Dark mode with data-theme attribute */
 html[data-theme="dark"] {
-  --background-primary: #0f172a;       /* Deeper blue-gray background */
-  --background-secondary: #1e293b;     /* Medium blue-gray */
-  --background-tertiary: #334155;      /* Lighter blue-gray for cards */
-  --foreground-primary: #f8fafc;       /* Almost white for primary text - maximum contrast */
-  --foreground-secondary: #e2e8f0;     /* Very light gray for secondary text - improved contrast */
-  --foreground-tertiary: #cbd5e1;      /* Light gray for tertiary text - improved contrast */
-  --accent-primary: #60a5fa;           /* Bright blue for better visibility */
-  --accent-secondary: #93c5fd;         /* Lighter bright blue */
-  --accent-tertiary: #1e40af;          /* Deep navy blue */
-  --border-color: #475569;             /* Medium gray border */
+  --background-primary: #0a0a0f;       /* Very dark blue-gray, almost black */
+  --background-secondary: #111827;     /* Dark blue-gray */
+  --background-tertiary: #1e293b;      /* Medium blue-gray for cards */
+  --foreground-primary: #e2e8f0;       /* Light gray for primary text - easier on eyes */
+  --foreground-secondary: #cbd5e1;     /* Medium light gray for secondary text */
+  --foreground-tertiary: #94a3b8;      /* Medium gray for tertiary text - less bright */
+  --accent-primary: #3b82f6;           /* Clear blue - good contrast without being too bright */
+  --accent-secondary: #60a5fa;         /* Lighter blue */
+  --accent-tertiary: #172554;          /* Very deep navy blue */
+  --border-color: #334155;             /* Subtle border color */
   --success-color: #10b981;
   --error-color: #ef4444;
   --warning-color: #f59e0b;
@@ -60,16 +60,16 @@ html[data-theme="dark"] {
 /* Keep the media query as a fallback */
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) {
-    --background-primary: #0f172a;       /* Deeper blue-gray background */
-    --background-secondary: #1e293b;     /* Medium blue-gray */
-    --background-tertiary: #334155;      /* Lighter blue-gray for cards */
-    --foreground-primary: #f8fafc;       /* Almost white for primary text - maximum contrast */
-    --foreground-secondary: #e2e8f0;     /* Very light gray for secondary text - improved contrast */
-    --foreground-tertiary: #cbd5e1;      /* Light gray for tertiary text - improved contrast */
-    --accent-primary: #60a5fa;           /* Bright blue for better visibility */
-    --accent-secondary: #93c5fd;         /* Lighter bright blue */
-    --accent-tertiary: #1e40af;          /* Deep navy blue */
-    --border-color: #475569;             /* Medium gray border */
+    --background-primary: #0a0a0f;       /* Very dark blue-gray, almost black */
+    --background-secondary: #111827;     /* Dark blue-gray */
+    --background-tertiary: #1e293b;      /* Medium blue-gray for cards */
+    --foreground-primary: #e2e8f0;       /* Light gray for primary text - easier on eyes */
+    --foreground-secondary: #cbd5e1;     /* Medium light gray for secondary text */
+    --foreground-tertiary: #94a3b8;      /* Medium gray for tertiary text - less bright */
+    --accent-primary: #3b82f6;           /* Clear blue - good contrast without being too bright */
+    --accent-secondary: #60a5fa;         /* Lighter blue */
+    --accent-tertiary: #172554;          /* Very deep navy blue */
+    --border-color: #334155;             /* Subtle border color */
     --success-color: #10b981;
     --error-color: #ef4444;
     --warning-color: #f59e0b;

@@ -33,9 +33,9 @@ export default function BiographyContent() {
           </motion.p>
         ))}
 
-        {/* Business Background highlight */}
+        {/* Business Background highlight - more minimalistic */}
         <motion.div
-          className="bg-[var(--accent-tertiary)]/10 p-4 rounded-lg my-6 border-l-4 border-[var(--accent-primary)]"
+          className="border-l border-[var(--accent-primary)] pl-4 my-6"
           variants={itemVariants}
         >
           <motion.h3
