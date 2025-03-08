@@ -19,7 +19,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="fixed w-full z-20 bg-transparent backdrop-blur-sm h-16 relative overflow-visible border-b border-[var(--border-color)] bg-[var(--background-primary)] bg-opacity-80"
+      className="fixed w-full z-20 bg-transparent backdrop-blur-sm h-16 relative overflow-visible bg-[var(--background-primary)] bg-opacity-80"
       style={{ height: "64px" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 h-full">
@@ -40,7 +40,7 @@ export default function Navbar() {
                   href={item.path}
                   className={`px-2 py-1 text-sm font-medium transition-colors ${
                     pathname === item.path
-                      ? "text-[var(--accent-primary)] border-b-2 border-[var(--accent-primary)]"
+                      ? "text-[var(--accent-primary)]"
                       : "text-[var(--foreground-secondary)] hover:text-[var(--foreground-primary)]"
                   }`}
                 >
@@ -98,7 +98,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div className={`${isMenuOpen ? "block" : "hidden"} md:hidden`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[var(--background-primary)] shadow-sm border-b border-[var(--border-color)]">
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[var(--background-primary)] shadow-sm">
           {navItems.map((item) => (
             <Link
               key={item.name}

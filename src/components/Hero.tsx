@@ -29,43 +29,18 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p
-          className="text-xl md:text-2xl text-[var(--foreground-secondary)] mb-4"
+          className="text-xl md:text-2xl text-[var(--foreground-secondary)] mb-8"
           variants={itemVariants}
         >
           {profileData.title}
         </motion.p>
 
         <motion.p
-          className="text-md md:text-lg text-[var(--accent-primary)] mb-6"
-          variants={itemVariants}
-        >
-          Blending Technical Expertise with Business Acumen
-        </motion.p>
-
-        <motion.p
-          className="text-lg text-[var(--foreground-tertiary)] mb-8 max-w-2xl mx-auto"
+          className="text-lg text-[var(--foreground-tertiary)] mb-10 max-w-2xl mx-auto"
           variants={itemVariants}
         >
           {profileData.bioParagraphs[0]}
         </motion.p>
-
-        <motion.div
-          className="flex justify-center gap-4 mb-10"
-          variants={itemVariants}
-        >
-          <motion.span className="px-3 py-1 bg-[var(--accent-tertiary)]/10 text-[var(--foreground-primary)] rounded-full text-sm inline-flex items-center">
-            <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] mr-2"></span>
-            Web Development
-          </motion.span>
-          <motion.span className="px-3 py-1 bg-[var(--accent-tertiary)]/10 text-[var(--foreground-primary)] rounded-full text-sm inline-flex items-center">
-            <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] mr-2"></span>
-            Business Strategy
-          </motion.span>
-          <motion.span className="px-3 py-1 bg-[var(--accent-tertiary)]/10 text-[var(--foreground-primary)] rounded-full text-sm inline-flex items-center">
-            <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] mr-2"></span>
-            Project Management
-          </motion.span>
-        </motion.div>
 
         <motion.div
           className="flex flex-wrap gap-4 justify-center"

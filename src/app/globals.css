@@ -38,16 +38,16 @@ html[data-theme="dark"] {
   --background-primary: #030712;       /* Deeper dark */
   --background-secondary: #111827;     /* Deep blue-gray */
   --background-tertiary: #1f2937;      /* Dark blue-gray */
-  --foreground-primary: #f9fafb;
-  --foreground-secondary: #e5e7eb;
-  --foreground-tertiary: #9ca3af;
-  --accent-primary: #1d4ed8;           /* Deeper blue */
-  --accent-secondary: #2563eb;         /* Rich blue */
+  --foreground-primary: #f9fafb;       /* Very light gray for primary text */
+  --foreground-secondary: #e5e7eb;     /* Light gray for secondary text */
+  --foreground-tertiary: #d1d5db;      /* Lighter gray for tertiary text - improved contrast */
+  --accent-primary: #3b82f6;           /* Brighter blue for better visibility */
+  --accent-secondary: #60a5fa;         /* Lighter blue */
   --accent-tertiary: #1e3a8a;          /* Deep navy blue */
   --border-color: #374151;
-  --success-color: #059669;
-  --error-color: #dc2626;
-  --warning-color: #d97706;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
 }
 
 /* Perspective container for page transitions */
@@ -63,16 +63,16 @@ html[data-theme="dark"] {
     --background-primary: #030712;       /* Deeper dark */
     --background-secondary: #111827;     /* Deep blue-gray */
     --background-tertiary: #1f2937;      /* Dark blue-gray */
-    --foreground-primary: #f9fafb;
-    --foreground-secondary: #e5e7eb;
-    --foreground-tertiary: #9ca3af;
-    --accent-primary: #1d4ed8;           /* Deeper blue */
-    --accent-secondary: #2563eb;         /* Rich blue */
+    --foreground-primary: #f9fafb;       /* Very light gray for primary text */
+    --foreground-secondary: #e5e7eb;     /* Light gray for secondary text */
+    --foreground-tertiary: #d1d5db;      /* Lighter gray for tertiary text - improved contrast */
+    --accent-primary: #3b82f6;           /* Brighter blue for better visibility */
+    --accent-secondary: #60a5fa;         /* Lighter blue */
     --accent-tertiary: #1e3a8a;          /* Deep navy blue */
     --border-color: #374151;
-    --success-color: #059669;
-    --error-color: #dc2626;
-    --warning-color: #d97706;
+    --success-color: #10b981;
+    --error-color: #ef4444;
+    --warning-color: #f59e0b;
   }
 }
 
