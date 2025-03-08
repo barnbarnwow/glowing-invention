@@ -1,7 +1,7 @@
 "use client";
 
 import React, { ReactNode } from "react";
-import BorderGlowWrapper from "./BorderGlowWrapper";
+import ProximityBorder from "./BorderGlowWrapper";
 
 interface CardProps {
   children: ReactNode;
@@ -9,12 +9,12 @@ interface CardProps {
 }
 
 /**
- * Card component with glowing border effect when mouse is nearby
+ * Card component with border that changes color intensity based on mouse proximity
  */
 export default function Card({ children, className = "" }: CardProps) {
   return (
-    <BorderGlowWrapper proximityThreshold={150}>
+    <ProximityBorder proximityThreshold={150} levels={5}>
       <div className={`card ${className}`}>{children}</div>
-    </BorderGlowWrapper>
+    </ProximityBorder>
   );
 }

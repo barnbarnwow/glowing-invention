@@ -3,7 +3,6 @@ import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { ThemeProvider } from "../components/ThemeProvider";
-import CursorGlow from "@/components/CursorGlow";
 
 export const metadata: Metadata = {
   title: "Your Name | Web Developer & Designer",
@@ -21,7 +20,6 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className="antialiased">
         <ThemeProvider>
-          <CursorGlow />
           <Navbar />
           <main className="overflow-hidden relative z-1">{children}</main>
           <Footer />

@@ -2,25 +2,27 @@
 
 import React, { useState, useRef, useEffect, ReactNode } from "react";
 
-interface BorderGlowWrapperProps {
+interface ProximityBorderProps {
   children: ReactNode;
   className?: string;
   proximityThreshold?: number;
+  levels?: number;
 }
 
 /**
- * A wrapper component that adds a glowing border effect when
- * the mouse cursor is near the element
+ * A wrapper component that changes border color intensity
+ * based on mouse proximity to the element
  */
-export default function BorderGlowWrapper({
+export default function ProximityBorder({
   children,
   className = "",
-  proximityThreshold = 100,
-}: BorderGlowWrapperProps) {
-  const [isGlowing, setIsGlowing] = useState(false);
+  proximityThreshold = 150,
+  levels = 5,
+}: ProximityBorderProps) {
+  const [intensity, setIntensity] = useState(0);
   const elementRef = useRef<HTMLDivElement>(null);
 
-  // Function to check proximity to mouse and activate glow
+  // Function to calculate and set border intensity based on mouse distance
   useEffect(() => {
     // Track mouse movements to check proximity
     const handleMouseMove = (e: MouseEvent) => {
@@ -37,8 +39,16 @@ export default function BorderGlowWrapper({
             Math.pow(e.clientY - elementCenterY, 2)
         );
 
-        // Activate glow if mouse is within proximity threshold
-        setIsGlowing(distance < proximityThreshold);
+        // Calculate intensity level based on distance and threshold
+        if (distance > proximityThreshold) {
+          setIntensity(0); // Outside threshold - no effect
+        } else {
+          // Map distance to intensity levels (reversed so closer = higher intensity)
+          const newIntensity = Math.floor(
+            (1 - distance / proximityThreshold) * levels
+          );
+          setIntensity(Math.min(Math.max(newIntensity, 0), levels));
+        }
       }
     };
 
@@ -46,12 +56,13 @@ export default function BorderGlowWrapper({
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [proximityThreshold]);
+  }, [proximityThreshold, levels]);
 
   return (
     <div
       ref={elementRef}
-      className={`border-glow ${isGlowing ? "active" : ""} ${className}`}
+      className={`proximity-border ${className}`}
+      data-intensity={intensity}
     >
       {children}
     </div>

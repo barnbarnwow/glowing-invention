@@ -2,19 +2,16 @@
 @import "tailwindcss";
 
 :root {
-  /* Light mode colors - black and white with red/purple accents */
+  /* Light mode colors - red theme */
   --background-primary: #fcfcfc;
   --background-secondary: #f5f5f7;
   --background-tertiary: #ffffff;
-  --glow-color-light: rgba(157, 23, 77, 0.07);
-  --glow-color-dark: rgba(157, 23, 77, 0.02);
-  --glow-size: 25vw;
   --foreground-primary: #1a1a1a;
   --foreground-secondary: #333333;
   --foreground-tertiary: #666666;
-  --accent-primary: #9d174d;    /* Deep purple-red */
-  --accent-secondary: #6d28d9;  /* Purple */
-  --accent-tertiary: #e5e0ff;   /* Light purple */
+  --accent-primary: #dc2626;    /* Lively red */
+  --accent-secondary: #ef4444;  /* Lighter red */
+  --accent-tertiary: #fee2e2;   /* Light red */
   --border-color: #e0e0e0;
   --success-color: #065f46;
   --error-color: #b91c1c;
@@ -34,19 +31,16 @@
 
 /* Dark mode with data-theme attribute */
 html[data-theme="dark"] {
-  --background-primary: #121218;
-  --background-secondary: #1e1e24;
-  --background-tertiary: #242430;
-  --glow-color-light: rgba(217, 70, 239, 0.1);
-  --glow-color-dark: rgba(217, 70, 239, 0.03);
-  --glow-size: 25vw;
+  --background-primary: #0a1929;
+  --background-secondary: #112a45;
+  --background-tertiary: #16375c;
   --foreground-primary: #f8f8f8;
   --foreground-secondary: #e0e0e0;
   --foreground-tertiary: #a0a0a0;
-  --accent-primary: #d946ef;   /* Bright purple-pink */
-  --accent-secondary: #8b5cf6;  /* Bright purple */
-  --accent-tertiary: #4c1d95;   /* Deep purple */
-  --border-color: #333333;
+  --accent-primary: #0ea5e9;   /* Calming blue */
+  --accent-secondary: #38bdf8;  /* Lighter blue */
+  --accent-tertiary: #0c4a6e;   /* Deep blue */
+  --border-color: #1e3a5f;
   --success-color: #059669;
   --error-color: #dc2626;
   --warning-color: #d97706;
@@ -55,19 +49,16 @@ html[data-theme="dark"] {
 /* Keep the media query as a fallback */
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) {
-    --background-primary: #121218;
-    --background-secondary: #1e1e24;
-    --background-tertiary: #242430;
-    --glow-color-light: rgba(217, 70, 239, 0.1);
-    --glow-color-dark: rgba(217, 70, 239, 0.03);
-    --glow-size: 25vw;
+    --background-primary: #0a1929;
+    --background-secondary: #112a45;
+    --background-tertiary: #16375c;
     --foreground-primary: #f8f8f8;
     --foreground-secondary: #e0e0e0;
     --foreground-tertiary: #a0a0a0;
-    --accent-primary: #d946ef;   /* Bright purple-pink */
-    --accent-secondary: #8b5cf6;  /* Bright purple */
-    --accent-tertiary: #4c1d95;   /* Deep purple */
-    --border-color: #333333;
+    --accent-primary: #0ea5e9;   /* Calming blue */
+    --accent-secondary: #38bdf8;  /* Lighter blue */
+    --accent-tertiary: #0c4a6e;   /* Deep blue */
+    --border-color: #1e3a5f;
     --success-color: #059669;
     --error-color: #dc2626;
     --warning-color: #d97706;
@@ -97,28 +88,6 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.01em;
   position: relative;
   z-index: 5;
-}
-
-/* Mouse glow effect */
-.cursor-glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: var(--glow-size);
-  height: var(--glow-size);
-  background: radial-gradient(circle, var(--glow-color-light) 0%, var(--glow-color-dark) 30%, transparent 70%);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: -1; /* Place it behind everything */
-  filter: blur(70px);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  will-change: transform, left, top;
-}
-
-.cursor-glow.active {
-  opacity: 1;
 }
 
 /* Clean transparent background class */
@@ -183,38 +152,35 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
 }
 
-/* Interactive border glow effect for elements with borders */
-.border-glow {
+/* Proximity-based border effect */
+.proximity-border {
   position: relative;
+  border: 2px solid var(--accent-primary);
+  transition: border-color 0.2s ease;
 }
 
-.border-glow::after {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
-  pointer-events: none;
+.proximity-border[data-intensity="0"] {
+  border-color: var(--border-color);
 }
 
-.border-glow.active::after {
-  opacity: 0.6;
-  animation: shimmer 1.5s infinite alternate;
+.proximity-border[data-intensity="1"] {
+  border-color: color-mix(in srgb, var(--border-color) 80%, var(--accent-primary) 20%);
 }
 
-@keyframes shimmer {
-  0% {
-    filter: brightness(0.9) blur(0.5px);
-  }
-  100% {
-    filter: brightness(1.1) blur(1px);
-  }
+.proximity-border[data-intensity="2"] {
+  border-color: color-mix(in srgb, var(--border-color) 60%, var(--accent-primary) 40%);
+}
+
+.proximity-border[data-intensity="3"] {
+  border-color: color-mix(in srgb, var(--border-color) 40%, var(--accent-primary) 60%);
+}
+
+.proximity-border[data-intensity="4"] {
+  border-color: color-mix(in srgb, var(--border-color) 20%, var(--accent-primary) 80%);
+}
+
+.proximity-border[data-intensity="5"] {
+  border-color: var(--accent-primary);
 }
 
 /* Dark mode shadow removal */

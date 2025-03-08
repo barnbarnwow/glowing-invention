@@ -20,11 +20,14 @@ export default function Button({
   className = "",
   type = "button",
 }: ButtonProps) {
-  const [isGlowing, setIsGlowing] = useState(false);
+  const [intensity, setIntensity] = useState(0);
   const buttonRef = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
 
-  // Function to check proximity to mouse and activate glow
+  // Function to calculate and set border intensity based on mouse distance
   useEffect(() => {
+    const proximityThreshold = 150;
+    const levels = 5;
+
     // Track mouse movements to check proximity
     const handleMouseMove = (e: MouseEvent) => {
       if (buttonRef.current) {
@@ -38,8 +41,15 @@ export default function Button({
             Math.pow(e.clientY - buttonCenterY, 2)
         );
 
-        // Activate glow if mouse is within 100px
-        setIsGlowing(distance < 100);
+        // Calculate intensity based on distance
+        if (distance > proximityThreshold) {
+          setIntensity(0);
+        } else {
+          const newIntensity = Math.floor(
+            (1 - distance / proximityThreshold) * levels
+          );
+          setIntensity(Math.min(Math.max(newIntensity, 0), levels));
+        }
       }
     };
 
@@ -58,9 +68,7 @@ export default function Button({
     outline: "gradient-accent hover:translate-y-[-1px]",
   };
 
-  const buttonStyles = `${baseStyles} ${variantStyles[variant]} border-glow ${
-    isGlowing ? "active" : ""
-  } ${className}`;
+  const buttonStyles = `${baseStyles} ${variantStyles[variant]} proximity-border ${className}`;
 
   // If href is provided, render as Link
   if (href) {
@@ -69,6 +77,7 @@ export default function Button({
         href={href}
         className={buttonStyles}
         ref={buttonRef as React.RefObject<HTMLAnchorElement>}
+        data-intensity={intensity}
       >
         {children}
       </Link>
@@ -82,6 +91,7 @@ export default function Button({
       className={buttonStyles}
       onClick={onClick}
       ref={buttonRef as React.RefObject<HTMLButtonElement>}
+      data-intensity={intensity}
     >
       {children}
     </button>
