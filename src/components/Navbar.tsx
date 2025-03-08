@@ -19,30 +19,42 @@ export default function Navbar() {
 
   return (
     <nav
-      className="fixed w-full z-20 bg-[var(--background-primary)] bg-opacity-90 backdrop-blur-sm h-16 relative overflow-visible"
-      style={{ height: "64px" }}
+      className="fixed w-full z-20 bg-[var(--background-primary)] border-b-2 border-[var(--foreground-primary)]"
+      style={{ height: "70px" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 h-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex justify-between items-center h-full">
           {/* Logo/Brand */}
-          <div className="flex-shrink-0 text-2xl">
+          <div className="flex-shrink-0 text-3xl tracking-widest">
             <Link href="/" className="text-[var(--foreground-primary)]">
-              <span className="text-[var(--accent-primary)]">Barney</span>Jesse
+              <span className="text-[var(--foreground-primary)] font-sans">
+                Barney
+              </span>
+              <span className="text-[var(--foreground-primary)] font-sans">
+                Jesse
+              </span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center h-full">
-            <div className="ml-10 flex items-center space-x-8 h-full">
+            <div className="ml-10 flex items-center space-x-10 h-full">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.path}
-                  className={`px-2 text-base tracking-wider transition-colors ${
+                  className={`px-3 py-1 text-lg tracking-wider transition-all relative ${
                     pathname === item.path
-                      ? "text-[var(--accent-primary)]"
-                      : "text-[var(--foreground-secondary)] hover:text-[var(--foreground-primary)]"
+                      ? "text-[var(--background-primary)] bg-[var(--foreground-primary)]"
+                      : "text-[var(--foreground-primary)] hover:translate-y(-2px)"
                   }`}
+                  style={{
+                    boxShadow:
+                      pathname === item.path
+                        ? "none"
+                        : "3px 3px 0 var(--foreground-secondary)",
+                    border: "2px solid var(--foreground-primary)",
+                  }}
                 >
                   {item.name}
                 </Link>
@@ -54,9 +66,13 @@ export default function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-[var(--foreground-secondary)] hover:text-[var(--foreground-primary)] focus:outline-none"
+              className="inline-flex items-center justify-center p-2 border-2 border-[var(--foreground-primary)]"
               aria-expanded="false"
-              style={{ width: "36px", height: "36px" }}
+              style={{
+                width: "40px",
+                height: "40px",
+                boxShadow: "3px 3px 0 var(--foreground-secondary)",
+              }}
             >
               <span className="sr-only">Open main menu</span>
               {/* Icon when menu is closed */}
@@ -69,8 +85,8 @@ export default function Navbar() {
                 aria-hidden="true"
               >
                 <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  strokeLinecap="square"
+                  strokeLinejoin="miter"
                   strokeWidth={2}
                   d="M4 6h16M4 12h16M4 18h16"
                 />
@@ -85,8 +101,8 @@ export default function Navbar() {
                 aria-hidden="true"
               >
                 <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  strokeLinecap="square"
+                  strokeLinejoin="miter"
                   strokeWidth={2}
                   d="M6 18L18 6M6 6l12 12"
                 />
@@ -98,16 +114,22 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div className={`${isMenuOpen ? "block" : "hidden"} md:hidden`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[var(--background-primary)] border-t border-[var(--border-color)]">
+        <div className="px-4 pt-2 pb-3 space-y-3 border-t-2 border-[var(--foreground-primary)] bg-[var(--background-primary)]">
           {navItems.map((item) => (
             <Link
               key={item.name}
               href={item.path}
               className={`block px-3 py-2 text-base tracking-wider ${
                 pathname === item.path
-                  ? "text-[var(--accent-primary)]"
-                  : "text-[var(--foreground-secondary)] hover:text-[var(--foreground-primary)]"
+                  ? "text-[var(--background-primary)] bg-[var(--foreground-primary)]"
+                  : "text-[var(--foreground-primary)] border-2 border-[var(--foreground-primary)]"
               }`}
+              style={{
+                boxShadow:
+                  pathname === item.path
+                    ? "none"
+                    : "3px 3px 0 var(--foreground-secondary)",
+              }}
               onClick={() => setIsMenuOpen(false)}
             >
               {item.name}

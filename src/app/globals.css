@@ -2,20 +2,20 @@
 @import "tailwindcss";
 
 :root {
-  /* Light mode colors - minimalistic theme */
+  /* Brutalist color scheme - minimal, high contrast, raw */
   --background-primary: #ffffff;
-  --background-secondary: #f9fafb;
-  --background-tertiary: #ffffff;
-  --foreground-primary: #111827;
-  --foreground-secondary: #374151;
-  --foreground-tertiary: #6b7280;
-  --accent-primary: #2563eb;    /* Blue */
-  --accent-secondary: #3b82f6;  /* Lighter blue */
-  --accent-tertiary: #dbeafe;   /* Light blue */
-  --border-color: #e5e7eb;
-  --success-color: #10b981;
-  --error-color: #ef4444;
-  --warning-color: #f59e0b;
+  --background-secondary: #f1f1f1;
+  --background-tertiary: #e6e6e6;
+  --foreground-primary: #000000;
+  --foreground-secondary: #333333;
+  --foreground-tertiary: #666666;
+  --accent-primary: #000000;    /* Black accent for brutalism */
+  --accent-secondary: #333333;  /* Dark gray */
+  --accent-tertiary: #f1f1f1;   /* Light gray */
+  --border-color: #000000;      /* Solid black borders */
+  --success-color: #000000;     /* Monochromatic for brutalist aesthetic */
+  --error-color: #000000;
+  --warning-color: #000000;
   
   /* Font families */
   --font-serif: 'EB Garamond', Georgia, serif;
@@ -35,19 +35,19 @@
 
 /* Dark mode with data-theme attribute */
 html[data-theme="dark"] {
-  --background-primary: #0a0a0f;       /* Very dark blue-gray, almost black */
-  --background-secondary: #111827;     /* Dark blue-gray */
-  --background-tertiary: #1e293b;      /* Medium blue-gray for cards */
-  --foreground-primary: #e2e8f0;       /* Light gray for primary text - easier on eyes */
-  --foreground-secondary: #cbd5e1;     /* Medium light gray for secondary text */
-  --foreground-tertiary: #94a3b8;      /* Medium gray for tertiary text - less bright */
-  --accent-primary: #3b82f6;           /* Clear blue - good contrast without being too bright */
-  --accent-secondary: #60a5fa;         /* Lighter blue */
-  --accent-tertiary: #172554;          /* Very deep navy blue */
-  --border-color: #334155;             /* Subtle border color */
-  --success-color: #10b981;
-  --error-color: #ef4444;
-  --warning-color: #f59e0b;
+  --background-primary: #0a0a0a;       /* Almost black */
+  --background-secondary: #1a1a1a;     /* Very dark gray */
+  --background-tertiary: #2a2a2a;      /* Dark gray */
+  --foreground-primary: #ffffff;       /* White text */
+  --foreground-secondary: #cccccc;     /* Light gray */
+  --foreground-tertiary: #999999;      /* Medium gray */
+  --accent-primary: #ffffff;           /* White accent for brutalism */
+  --accent-secondary: #cccccc;         /* Light gray */
+  --accent-tertiary: #333333;          /* Dark gray */
+  --border-color: #ffffff;             /* Solid white borders */
+  --success-color: #ffffff;
+  --error-color: #ffffff;
+  --warning-color: #ffffff;
 }
 
 /* Perspective container for page transitions */
@@ -60,19 +60,19 @@ html[data-theme="dark"] {
 /* Keep the media query as a fallback */
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) {
-    --background-primary: #0a0a0f;       /* Very dark blue-gray, almost black */
-    --background-secondary: #111827;     /* Dark blue-gray */
-    --background-tertiary: #1e293b;      /* Medium blue-gray for cards */
-    --foreground-primary: #e2e8f0;       /* Light gray for primary text - easier on eyes */
-    --foreground-secondary: #cbd5e1;     /* Medium light gray for secondary text */
-    --foreground-tertiary: #94a3b8;      /* Medium gray for tertiary text - less bright */
-    --accent-primary: #3b82f6;           /* Clear blue - good contrast without being too bright */
-    --accent-secondary: #60a5fa;         /* Lighter blue */
-    --accent-tertiary: #172554;          /* Very deep navy blue */
-    --border-color: #334155;             /* Subtle border color */
-    --success-color: #10b981;
-    --error-color: #ef4444;
-    --warning-color: #f59e0b;
+    --background-primary: #0a0a0a;
+    --background-secondary: #1a1a1a;
+    --background-tertiary: #2a2a2a;
+    --foreground-primary: #ffffff;
+    --foreground-secondary: #cccccc;
+    --foreground-tertiary: #999999;
+    --accent-primary: #ffffff;
+    --accent-secondary: #cccccc;
+    --accent-tertiary: #333333;
+    --border-color: #ffffff;
+    --success-color: #ffffff;
+    --error-color: #ffffff;
+    --warning-color: #ffffff;
   }
 }
 
@@ -81,10 +81,10 @@ body {
   background: var(--background-primary);
   color: var(--foreground-primary);
   font-family: var(--font-sans);
-  font-weight: 300;
-  letter-spacing: 0.01em;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   position: relative;
-  overflow-x: hidden;
+  line-height: 1.3;
 }
 
 /* Make sure main content doesn't hide the glow */
@@ -92,31 +92,49 @@ main {
   background: transparent !important;
   position: relative;
   z-index: 1;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-/* Typography styling - adjusted for Bebas Neue and EB Garamond */
+/* Typography styling - exaggerated for Bebas Neue */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
-  font-weight: 400; /* Bebas Neue only comes in one weight, so we use 400 */
-  letter-spacing: 0.02em; /* Slightly increased for Bebas Neue */
+  font-weight: 400;
+  letter-spacing: 0.05em; /* Increased for brutalist effect */
+  text-transform: uppercase; /* All caps for brutalist impact */
   position: relative;
   z-index: 5;
-  margin-bottom: 1rem;
-  line-height: 1.1; /* Tighter line height for Bebas Neue */
+  margin-bottom: 1.5rem;
+  line-height: 0.95; /* Extra tight for brutalist effect */
 }
 
-/* Set paragraph text to use serif font for better readability */
+h1 {
+  font-size: 5rem; /* Exaggerated size */
+}
+
+h2 {
+  font-size: 3.5rem;
+}
+
+h3 {
+  font-size: 2.5rem;
+}
+
+/* Set paragraph text to use serif font for contrast with headers */
 p, span, li {
   font-family: var(--font-serif);
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.5;
+  margin-bottom: 1.5rem;
 }
 
 /* Use Bebas Neue for navigation, buttons, etc. */
 a, button, nav, .text-sm, .text-xs {
   font-family: var(--font-sans);
-  letter-spacing: 0.03em; /* More letter spacing for Bebas Neue in smaller text */
+  letter-spacing: 0.05em; /* Exaggerated letter spacing */
+  text-transform: uppercase;
 }
 
 /* Clean transparent background class */
@@ -125,40 +143,42 @@ a, button, nav, .text-sm, .text-xs {
   position: relative;
 }
 
-/* Button styles - more minimalistic */
+/* Button styles - brutalist approach */
 .btn {
-  padding: 0.5rem 1.25rem;
-  border-radius: 0.25rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  transition: all 0.2s ease;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--foreground-primary);
+  background: transparent;
+  color: var(--foreground-primary);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 5;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 0; /* Square corners for brutalist design */
 }
 
 .btn-primary {
-  background-color: var(--accent-primary);
-  color: white;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  background-color: var(--foreground-primary);
+  color: var(--background-primary);
+  box-shadow: 4px 4px 0 var(--foreground-secondary);
 }
 
 .btn-primary:hover {
-  background-color: var(--accent-secondary);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transform: translateY(-1px);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--foreground-secondary);
 }
 
 /* Standardized animations for all components */
 .animate-on-hover {
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .animate-on-hover:hover {
-  transform: translateY(-1px);
-  transition: all 0.3s ease;
+  transform: translateY(-4px);
 }
 
 .animate-on-hover:focus-visible {
@@ -166,166 +186,118 @@ a, button, nav, .text-sm, .text-xs {
   outline-offset: 2px;
 }
 
-/* Dark mode shadow removal */
-html[data-theme="dark"] .btn-primary, 
-html[data-theme="dark"] .card, 
-html[data-theme="dark"] .gradient-accent {
-  box-shadow: 0 0 0 transparent;
-}
-
-html[data-theme="dark"] .btn-primary:hover, 
-html[data-theme="dark"] .card:hover, 
-html[data-theme="dark"] .gradient-accent:hover {
-  box-shadow: 0 0 0 transparent;
-}
-
-/* Card component style - more minimalistic */
+/* Card component style - brutalist approach */
 .card {
   background-color: var(--background-tertiary);
-  border-radius: 0.375rem;
+  border: 2px solid var(--foreground-primary);
+  border-radius: 0; /* Square corners for brutalist design */
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   z-index: 5;
-  border: 1px solid var(--border-color);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  box-shadow: 6px 6px 0 var(--foreground-secondary);
+  padding: 1.5rem;
 }
 
 .card:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--foreground-secondary);
 }
 
-/* Lift effect for hover - more subtle */
+/* Lift effect for hover - more pronounced */
 .lift-effect {
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
   position: relative;
   z-index: 5;
+  box-shadow: 4px 4px 0 var(--foreground-secondary);
 }
 
 .lift-effect:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--foreground-secondary);
 }
 
-/* Sunken effect for hover */
-.sunken-effect {
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
-  position: relative;
-  z-index: 5;
-}
-
-.sunken-effect:hover {
-  transform: translateY(1px);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-}
-
-/* Standard button styles - more minimalistic */
+/* Standard button styles - brutalist approach */
 .standard-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1.25rem;
-  font-weight: 500;
-  border-radius: 0.25rem;
-  background-color: var(--accent-primary);
-  color: white;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  padding: 0.75rem 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background-color: var(--foreground-primary);
+  color: var(--background-primary);
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 2px solid var(--foreground-primary);
+  border-radius: 0; /* Square corners for brutalist design */
+  box-shadow: 4px 4px 0 var(--foreground-secondary);
 }
 
 .standard-button:hover {
-  background-color: var(--accent-secondary);
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--foreground-secondary);
 }
 
 .standard-button.outline {
   background-color: transparent;
-  color: var(--accent-primary);
-  box-shadow: inset 0 0 0 1px var(--accent-primary);
+  color: var(--foreground-primary);
+  border: 2px solid var(--foreground-primary);
 }
 
 .standard-button.outline:hover {
-  background-color: var(--accent-primary);
-  color: white;
+  background-color: var(--foreground-primary);
+  color: var(--background-primary);
 }
 
-/* Profile image styling */
+/* Profile image styling - brutalist approach */
 .profile-image {
   position: relative;
-  border-radius: 50%;
+  border-radius: 0; /* Square for brutalist design */
   overflow: hidden;
+  border: 2px solid var(--foreground-primary);
+  box-shadow: 6px 6px 0 var(--foreground-secondary);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.profile-image::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  box-shadow: inset 0 0 0 1px var(--accent-primary);
-  border-radius: 50%;
-  opacity: 0.7;
-  z-index: 1;
-  transition: all 0.3s ease;
-}
-
-.profile-image::after {
-  content: '';
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  box-shadow: inset 0 0 0 1px var(--accent-primary);
-  border-radius: 50%;
-  opacity: 0.3;
-  z-index: 1;
-  transition: all 0.3s ease;
-}
-
-.profile-image:hover::before {
-  transform: scale(1.03);
-}
-
-.profile-image:hover::after {
-  transform: scale(1.05);
-  opacity: 0.5;
+.profile-image:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--foreground-secondary);
 }
 
 /* All sections should be transparent */
 section {
   background: transparent !important;
+  padding: 4rem 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Theme toggle button styling */
 .theme-toggle {
   cursor: pointer;
-  border: none;
+  border: 2px solid var(--foreground-primary);
   background: transparent;
-  color: var(--foreground-secondary);
-  transition: color 0.3s ease;
+  color: var(--foreground-primary);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   width: 40px;
   height: 40px;
   padding: 0.5rem;
-  border-radius: 9999px;
+  border-radius: 0; /* Square for brutalist design */
   position: relative;
   z-index: 10;
-  /* Prevent any size changes by making sure there's no border or outline */
-  outline: none;
-  box-shadow: none !important;
+  box-shadow: 3px 3px 0 var(--foreground-secondary);
 }
 
 .theme-toggle:hover {
-  color: var(--accent-primary);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--foreground-secondary);
 }
 
 .theme-toggle svg {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   width: 24px;
   height: 24px;
 }
@@ -334,78 +306,87 @@ section {
   transform: scale(0.9);
 }
 
-/* Theme transition effect for the entire page - backgrounds change smoothly */
+/* Theme transition effect */
 *, ::before, ::after {
-  transition-property: background-color, border-color, fill, stroke;
+  transition-property: background-color, border-color, fill, stroke, transform, box-shadow;
   transition-duration: 0.2s;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Text elements change colors instantly for better synchronization with animations */
-h1, h2, h3, h4, h5, h6, p, span, a, button {
-  transition-property: color;
-  transition-duration: 0s;
+/* Grid and layout helpers */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+/* Brutalist dividers */
+.brutalist-divider {
+  height: 4px;
+  background-color: var(--foreground-primary);
+  margin: 3rem 0;
+  width: 100%;
+}
+
+/* Brutalist lists */
+.brutalist-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.brutalist-list li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--foreground-tertiary);
   position: relative;
-  z-index: 5;
 }
 
-/* Dark mode shadow adjustments */
-html[data-theme="dark"] .lift-effect:hover {
-  box-shadow: 0 0 0 transparent;
-  /* Keep the same transform to ensure identical sizing */
-  transform: translateY(-5px);
+.brutalist-list li:last-child {
+  border-bottom: none;
 }
 
-/* Profile image static (no animation) */
-.profile-image-static {
-  position: relative;
-  display: block;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 1px solid var(--border-color);
+/* Typography utility classes */
+.text-huge {
+  font-size: 8rem;
+  line-height: 0.9;
+  letter-spacing: 0.05em;
 }
 
-.profile-image-static::before {
-  content: "";
-  display: none;
+.text-uppercase {
+  text-transform: uppercase;
 }
 
-/* Theme transition class for smooth light/dark switching */
-.theme-transition {
-  transition: background-color var(--theme-transition-duration) ease,
-              color var(--theme-transition-duration) ease,
-              border-color var(--theme-transition-duration) ease,
-              box-shadow var(--theme-transition-duration) ease;
+.tracking-brutalist {
+  letter-spacing: 0.08em;
 }
 
-/* Prevent transition on page load */
-.no-transition * {
-  transition: none !important;
+/* Special text styles */
+.text-outlined {
+  -webkit-text-stroke: 1px var(--foreground-primary);
+  color: transparent;
 }
 
-/* Theme toggle button styled for the footer */
-.theme-toggle-footer {
-  cursor: pointer;
-  border: none;
-  background-color: var(--background-tertiary);
-  color: var(--foreground-secondary);
-  transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.theme-toggle-footer:hover {
-  color: var(--accent-primary);
-  transform: translateY(-1px);
-}
-
-.theme-toggle-footer svg {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  width: 24px;
-  height: 24px;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+  }
+  
+  h3 {
+    font-size: 2rem;
+  }
+  
+  .text-huge {
+    font-size: 4rem;
+  }
+  
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
 } 
