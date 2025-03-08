@@ -15,7 +15,7 @@ export default function ProfileImage() {
   const isExternalImage = profileData.profileImage?.startsWith("http");
 
   return (
-    <Card className="p-0" liftEffect={true}>
+    <Card className="p-0" liftEffect={false}>
       <div className="p-8 h-full flex flex-col items-center justify-center">
         {/* Use a non-visible container for animation coordination */}
         <motion.div
@@ -28,7 +28,7 @@ export default function ProfileImage() {
         >
           {/* Image container with animations from opposite direction */}
           <motion.div
-            className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden bg-[var(--background-secondary)] shadow-lg mb-6 relative profile-image lift-effect"
+            className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden bg-[var(--background-secondary)] shadow-lg mb-6 relative profile-image-static"
             variants={itemVariantsReverse}
           >
             {profileData.profileImage ? (
