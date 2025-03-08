@@ -10,11 +10,12 @@ interface CardProps {
 
 /**
  * Standard Card component with optional lift effect
+ * More minimalistic approach with subtle animations
  */
 export default function Card({
   children,
   className = "",
-  liftEffect = true,
+  liftEffect = false,
 }: CardProps) {
   return (
     <div

@@ -3,63 +3,47 @@
 import React from "react";
 import { useTheme } from "./ThemeProvider";
 
-// Light mode icon - ring shape with point at top
+// Light mode icon - simplified
 const LightModeIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
+    width="20"
+    height="20"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    strokeWidth="1.75"
+    strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="transition-transform duration-500"
+    className="transition-transform duration-300"
   >
-    {/* Outer circle */}
-    <circle cx="12" cy="12" r="8" />
-    {/* Inner circle (cut out) */}
-    <circle cx="12" cy="12" r="4" fill="currentColor" />
-    {/* Point marker at the top - larger and with stroke */}
-    <circle
-      cx="12"
-      cy="3.5"
-      r="1.75"
-      fill="currentColor"
-      stroke="currentColor"
-      strokeWidth="0.75"
-    />
+    <circle cx="12" cy="12" r="5" />
+    <line x1="12" y1="1" x2="12" y2="3" />
+    <line x1="12" y1="21" x2="12" y2="23" />
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+    <line x1="1" y1="12" x2="3" y2="12" />
+    <line x1="21" y1="12" x2="23" y2="12" />
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
   </svg>
 );
 
-// Dark mode icon - circle with circle inside and point at bottom
+// Dark mode icon - simplified
 const DarkModeIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
+    width="20"
+    height="20"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    strokeWidth="1.75"
+    strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="rotate-180 transition-transform duration-500"
+    className="transition-transform duration-300"
   >
-    {/* Outer circle */}
-    <circle cx="12" cy="12" r="8" />
-    {/* Inner circle */}
-    <circle cx="12" cy="12" r="4" />
-    {/* Point marker at the top (appears at bottom due to rotation) - larger and with stroke */}
-    <circle
-      cx="12"
-      cy="3.5"
-      r="1.75"
-      fill="currentColor"
-      stroke="currentColor"
-      strokeWidth="0.75"
-    />
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
   </svg>
 );
 
@@ -71,23 +55,9 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
       title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-      className="theme-toggle-footer group"
+      className="p-2 rounded-md hover:bg-[var(--background-secondary)] transition-colors text-[var(--foreground-secondary)] hover:text-[var(--foreground-primary)]"
     >
-      <div className="flex items-center justify-center">
-        <div
-          style={{
-            width: "24px",
-            height: "24px",
-            display: "flex",
-            marginRight: "8px",
-          }}
-        >
-          {theme === "light" ? <DarkModeIcon /> : <LightModeIcon />}
-        </div>
-        <span className="text-sm font-medium text-[var(--foreground-secondary)]">
-          {theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
-        </span>
-      </div>
+      {theme === "light" ? <DarkModeIcon /> : <LightModeIcon />}
     </button>
   );
 }
