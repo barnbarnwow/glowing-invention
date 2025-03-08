@@ -1,28 +1,52 @@
+"use client";
+
 import React from "react";
 import { profileData } from "@/data/profileData";
+import { motion } from "framer-motion";
+import { containerVariants, itemVariants } from "@/utils/animationVariants";
 
 export default function BiographyContent() {
   return (
-    <div className="card bg-[var(--background-tertiary)] p-8 h-full shadow-xl border border-[var(--border-color)]">
-      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground-primary)] border-b border-[var(--border-color)] pb-3">
+    <motion.div
+      className="card bg-[var(--background-tertiary)] p-8 h-full shadow-xl border border-[var(--border-color)]"
+      variants={containerVariants}
+      transition={{
+        staggerChildren: 0.05,
+        delayChildren: 0.05,
+      }}
+    >
+      <motion.h2
+        className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground-primary)] border-b border-[var(--border-color)] pb-3"
+        variants={itemVariants}
+      >
         About Me
-      </h2>
+      </motion.h2>
       <div className="space-y-4">
         {/* Map through biography paragraphs */}
         {profileData.bioParagraphs.map((paragraph, index) => (
-          <p key={index} className="text-lg text-[var(--foreground-secondary)]">
+          <motion.p
+            key={index}
+            className="text-lg text-[var(--foreground-secondary)]"
+            variants={itemVariants}
+          >
             {paragraph}
-          </p>
+          </motion.p>
         ))}
 
         {/* Education section - only show if there are education items */}
         {profileData.education.length > 0 && (
-          <div className="pt-4 border-t border-[var(--border-color)] mt-6">
-            <h3 className="text-xl font-semibold mb-3 text-[var(--foreground-primary)]">
+          <motion.div
+            className="pt-4 border-t border-[var(--border-color)] mt-6"
+            variants={itemVariants}
+          >
+            <motion.h3
+              className="text-xl font-semibold mb-3 text-[var(--foreground-primary)]"
+              variants={itemVariants}
+            >
               Education
-            </h3>
+            </motion.h3>
             {profileData.education.map((edu, index) => (
-              <div key={index} className="mb-4">
+              <motion.div key={index} className="mb-4" variants={itemVariants}>
                 <p className="font-medium text-[var(--foreground-primary)] text-lg">
                   {edu.degree}
                 </p>
@@ -37,30 +61,41 @@ export default function BiographyContent() {
                     {edu.description}
                   </p>
                 )}
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
 
         {/* Interests section - only show if there are interests */}
         {profileData.interests.length > 0 && (
-          <div className="pt-4 border-t border-[var(--border-color)] mt-6">
-            <h3 className="text-xl font-semibold mb-3 text-[var(--foreground-primary)]">
+          <motion.div
+            className="pt-4 border-t border-[var(--border-color)] mt-6"
+            variants={itemVariants}
+          >
+            <motion.h3
+              className="text-xl font-semibold mb-3 text-[var(--foreground-primary)]"
+              variants={itemVariants}
+            >
               Interests
-            </h3>
-            <div className="flex flex-wrap gap-2">
+            </motion.h3>
+            <motion.div
+              className="flex flex-wrap gap-2"
+              variants={itemVariants}
+            >
               {profileData.interests.map((interest) => (
-                <span
+                <motion.span
                   key={interest}
                   className="px-3 py-1 bg-[var(--accent-tertiary)]/10 text-[var(--accent-primary)] rounded-full text-sm"
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05 }}
                 >
                   {interest}
-                </span>
+                </motion.span>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

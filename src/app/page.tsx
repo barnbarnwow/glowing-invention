@@ -1,3 +1,5 @@
+"use client";
+
 import PageTransition from "@/components/PageTransition";
 import Hero from "@/components/Hero";
 

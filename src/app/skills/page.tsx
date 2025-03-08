@@ -1,14 +1,26 @@
+"use client";
+
 import React from "react";
 import PageTransition from "@/components/PageTransition";
 import { profileData } from "@/data/profileData";
+import { motion } from "framer-motion";
+import {
+  containerVariants,
+  cardVariants,
+  itemVariants,
+} from "@/utils/animationVariants";
 
 // Skill Card Component
 const SkillCard = ({ skill }: { skill: string }) => (
-  <div className="bg-[var(--background-secondary)] p-6 rounded-lg shadow-sm text-center border border-[var(--border-color)] hover:border-[var(--accent-primary)] transition-all hover:transform hover:scale-105 group">
+  <motion.div
+    className="bg-[var(--background-secondary)] p-6 rounded-lg shadow-sm text-center border border-[var(--border-color)] hover:border-[var(--accent-primary)] transition-all group"
+    variants={cardVariants}
+    whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+  >
     <span className="text-lg font-medium text-[var(--foreground-secondary)] group-hover:text-[var(--accent-primary)] transition-colors">
       {skill}
     </span>
-  </div>
+  </motion.div>
 );
 
 export default function SkillsPage() {
@@ -18,18 +30,33 @@ export default function SkillsPage() {
         {/* Skills Section */}
         <section className="py-20 px-4 gradient-primary">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center text-[var(--foreground-primary)]">
+            <motion.h2
+              className="text-3xl md:text-4xl font-bold mb-10 text-center text-[var(--foreground-primary)]"
+              variants={itemVariants}
+            >
               My Skills
-            </h2>
+            </motion.h2>
 
-            <div className="card bg-[var(--background-tertiary)] p-8 rounded-xl shadow-xl">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <motion.div
+              className="card bg-[var(--background-tertiary)] p-8 rounded-xl shadow-xl"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{
+                staggerChildren: 0.05,
+                delayChildren: 0.05,
+              }}
+            >
+              <motion.div
+                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+                variants={containerVariants}
+              >
                 {/* Skill Items */}
                 {profileData.keySkills.map((skill) => (
                   <SkillCard key={skill} skill={skill} />
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
       </div>

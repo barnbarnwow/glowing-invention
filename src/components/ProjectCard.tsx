@@ -2,6 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { cardVariants } from "@/utils/animationVariants";
 
 interface ProjectCardProps {
   title: string;
@@ -19,7 +21,11 @@ export default function ProjectCard({
   imageUrl,
 }: ProjectCardProps) {
   return (
-    <div className="card bg-[var(--background-tertiary)] rounded-xl overflow-hidden shadow-lg border border-[var(--border-color)] hover:border-[var(--accent-primary)]">
+    <motion.div
+      className="card bg-[var(--background-tertiary)] rounded-xl overflow-hidden shadow-lg border border-[var(--border-color)] hover:border-[var(--accent-primary)]"
+      variants={cardVariants}
+      whileHover={{ y: -5, transition: { duration: 0.2 } }}
+    >
       <div className="h-48 bg-[var(--background-secondary)] flex items-center justify-center relative group">
         {imageUrl ? (
           <img
@@ -59,6 +65,6 @@ export default function ProjectCard({
           </span>
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -10,9 +10,9 @@ export const images = {
   
   // Project images
   projects: {
-    project1: "/images/projects/project1.jpg",
-    project2: "/images/projects/project2.jpg",
-    project3: "/images/projects/project3.jpg",
+    project1: "/images/projects/luxury-vehicles.jpg", // Sports car and motorcycles
+    project2: "/images/projects/texture-pattern.jpg", // Metal texture pattern
+    project3: "/images/projects/bedroom-design.jpg", // Modern bedroom design
   },
   
   // Icons and logos

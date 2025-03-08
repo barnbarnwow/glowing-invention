@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { ThemeProvider } from "../components/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Your Name | Web Developer & Designer",
@@ -18,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="antialiased">
-        <Navbar />
-        <main className="overflow-hidden">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <Navbar />
+          <main className="overflow-hidden">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
