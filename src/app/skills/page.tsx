@@ -5,7 +5,6 @@ import PageTransition from "@/components/PageTransition";
 import { profileData } from "@/data/profileData";
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "@/utils/animationVariants";
-import SkillCategory from "@/components/SkillCategory";
 import ProgressBar from "@/components/ProgressBar";
 import BulletItem from "@/components/BulletItem";
 import Card from "@/components/Card";
@@ -65,16 +64,16 @@ export default function SkillsPage() {
     }, {} as SkillCategoryMap);
   }, [keySkills]);
 
-  // Memoize skill proficiencies to avoid recalculation
+  // Memoize skill proficiencies to avoid recalculation - limit to top 3 skills
   const skillProficiencies: SkillProficiency[] = useMemo(() => {
     // Define all possible proficiencies
     const allProficiencies: SkillProficiency[] = [
       { skill: "React", level: "Expert", percentage: 90 },
+      { skill: "JavaScript", level: "Expert", percentage: 92 },
       { skill: "Next.js", level: "Advanced", percentage: 85 },
       { skill: "Tailwind CSS", level: "Advanced", percentage: 80 },
       { skill: "TypeScript", level: "Intermediate", percentage: 75 },
       { skill: "Node.js", level: "Intermediate", percentage: 70 },
-      { skill: "JavaScript", level: "Expert", percentage: 92 },
       { skill: "HTML/CSS", level: "Advanced", percentage: 88 },
       { skill: "Python", level: "Intermediate", percentage: 65 },
       { skill: "Git", level: "Advanced", percentage: 78 },
@@ -83,8 +82,11 @@ export default function SkillsPage() {
       { skill: "Marketing Strategy", level: "Intermediate", percentage: 75 },
     ];
 
-    // Filter to only include skills from keySkills
-    return allProficiencies.filter((item) => keySkills.includes(item.skill));
+    // Filter to include skills from keySkills and limit to top 3
+    return allProficiencies
+      .filter((item) => keySkills.includes(item.skill))
+      .sort((a, b) => b.percentage - a.percentage) // Sort by percentage (highest first)
+      .slice(0, 3); // Limit to top 3
   }, [keySkills]);
 
   // Professional development focus areas
@@ -142,23 +144,101 @@ export default function SkillsPage() {
               initial="hidden"
               animate="visible"
             >
+              {/* Professional Development - Moved to the top */}
+              <motion.div className="mb-12" variants={itemVariants}>
+                <h2 className="text-2xl font-medium mb-6 text-[var(--foreground-primary)]">
+                  Professional Development
+                </h2>
+                <Card className="p-6 rounded-xl">
+                  <p className="text-[var(--foreground-secondary)] mb-4">
+                    I&apos;m constantly expanding my skillset to stay current
+                    with industry trends and emerging technologies. My approach
+                    to learning is both hands-on and theoretical, ensuring a
+                    well-rounded understanding of new concepts.
+                  </p>
+
+                  {relevantInterests.length > 0 && (
+                    <div className="mb-4">
+                      <p className="text-[var(--foreground-secondary)] mb-2">
+                        Core areas of interest:
+                      </p>
+                      <ul className="mt-2 space-y-2">
+                        {relevantInterests.map((interest) => (
+                          <BulletItem key={interest} text={interest} />
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  <p className="text-[var(--foreground-secondary)]">
+                    Recent areas of focus:
+                  </p>
+                  <ul className="mt-2 space-y-2">
+                    {focusAreas.map((area) => (
+                      <BulletItem key={area} text={area} />
+                    ))}
+                  </ul>
+                </Card>
+              </motion.div>
+
+              {/* Skill Proficiency - Only render if we have proficiencies */}
+              {skillProficiencies.length > 0 && (
+                <motion.div className="mb-12" variants={itemVariants}>
+                  <h2 className="text-2xl font-medium mb-6 text-[var(--foreground-primary)]">
+                    Top Proficiency Levels
+                  </h2>
+                  <Card className="p-6 rounded-xl">
+                    {skillProficiencies.map((item, index) => (
+                      <ProgressBar
+                        key={item.skill}
+                        skill={item.skill}
+                        level={item.level}
+                        percentage={item.percentage}
+                        index={index}
+                      />
+                    ))}
+                  </Card>
+                </motion.div>
+              )}
+
               {/* Featured Skills - Only render if we have skills */}
               {hasSkills && (
                 <motion.div className="mb-12" variants={itemVariants}>
                   <h2 className="text-2xl font-medium mb-6 text-[var(--foreground-primary)]">
                     Technical Expertise
                   </h2>
+                  <p className="text-[var(--foreground-secondary)] mb-6">
+                    I specialize in modern web development technologies with a
+                    focus on creating responsive, performant applications. My
+                    technical skills span frontend frameworks, backend systems,
+                    and development tools that enable me to build comprehensive
+                    solutions.
+                  </p>
                   <motion.div
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                     variants={containerVariants}
                   >
                     {Object.entries(skillCategories).map(
                       ([category, skills]) => (
-                        <SkillCategory
-                          key={category}
-                          title={category}
-                          skills={skills}
-                        />
+                        <Card key={category} className="p-6 rounded-xl">
+                          <h3 className="text-xl font-medium mb-4 text-[var(--foreground-primary)]">
+                            {category}
+                          </h3>
+                          <div className="space-y-2">
+                            {skills.map((skill) => (
+                              <motion.div
+                                key={skill}
+                                className="flex items-center space-x-2"
+                                variants={itemVariants}
+                              >
+                                <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)]"></span>
+                                <span className="text-[var(--foreground-secondary)]">
+                                  {skill}
+                                </span>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </Card>
                       )
                     )}
                   </motion.div>
@@ -202,63 +282,6 @@ export default function SkillsPage() {
                     </Card>
                   ))}
                 </motion.div>
-              </motion.div>
-
-              {/* Skill Proficiency - Only render if we have proficiencies */}
-              {skillProficiencies.length > 0 && (
-                <motion.div className="mb-12" variants={itemVariants}>
-                  <h2 className="text-2xl font-medium mb-6 text-[var(--foreground-primary)]">
-                    Proficiency Levels
-                  </h2>
-                  <Card className="p-6 rounded-xl">
-                    {skillProficiencies.map((item, index) => (
-                      <ProgressBar
-                        key={item.skill}
-                        skill={item.skill}
-                        level={item.level}
-                        percentage={item.percentage}
-                        index={index}
-                      />
-                    ))}
-                  </Card>
-                </motion.div>
-              )}
-
-              {/* Professional Development */}
-              <motion.div variants={itemVariants}>
-                <h2 className="text-2xl font-medium mb-6 text-[var(--foreground-primary)]">
-                  Professional Development
-                </h2>
-                <Card className="p-6 rounded-xl">
-                  <p className="text-[var(--foreground-secondary)] mb-4">
-                    I&apos;m constantly expanding my skillset to stay current
-                    with industry trends and emerging technologies. My approach
-                    to learning is both hands-on and theoretical, ensuring a
-                    well-rounded understanding of new concepts.
-                  </p>
-
-                  {relevantInterests.length > 0 && (
-                    <div className="mb-4">
-                      <p className="text-[var(--foreground-secondary)] mb-2">
-                        Core areas of interest:
-                      </p>
-                      <ul className="mt-2 space-y-2">
-                        {relevantInterests.map((interest) => (
-                          <BulletItem key={interest} text={interest} />
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  <p className="text-[var(--foreground-secondary)]">
-                    Recent areas of focus:
-                  </p>
-                  <ul className="mt-2 space-y-2">
-                    {focusAreas.map((area) => (
-                      <BulletItem key={area} text={area} />
-                    ))}
-                  </ul>
-                </Card>
               </motion.div>
             </motion.div>
           </div>
