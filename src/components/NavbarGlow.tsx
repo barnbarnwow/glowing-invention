@@ -2,13 +2,23 @@
 
 import React, { useState, useEffect, useRef } from "react";
 
+/**
+ * Interface for mouse position coordinates
+ */
 interface MousePosition {
   x: number;
   y: number;
 }
 
+/**
+ * NavbarGlow component that creates an inverted glow effect for the navbar
+ */
 export default function NavbarGlow() {
   const [mousePosition, setMousePosition] = useState<MousePosition>({
+    x: 0,
+    y: 0,
+  });
+  const [targetPosition, setTargetPosition] = useState<MousePosition>({
     x: 0,
     y: 0,
   });
@@ -17,23 +27,37 @@ export default function NavbarGlow() {
   const navbarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Set initial delay before showing the glow effect
+    // Set a timer to activate the glow effect after a short delay
     const timer = setTimeout(() => {
       setIsActive(true);
     }, 1000);
 
-    // Track mouse movement but only when inside the navbar
+    // Animation frame for smooth cursor following with delay
+    let animationFrameId: number;
+
+    const animatePosition = () => {
+      if (isHovering) {
+        setMousePosition((prev) => ({
+          x: prev.x + (targetPosition.x - prev.x) * 0.05, // Reduced speed factor
+          y: prev.y + (targetPosition.y - prev.y) * 0.05,
+        }));
+      }
+
+      animationFrameId = requestAnimationFrame(animatePosition);
+    };
+
+    // Track mouse movements but only activate when hovering navbar
     const updateMousePosition = (e: MouseEvent) => {
+      // Get navbar element bounds
       if (navbarRef.current) {
-        const rect = navbarRef.current.getBoundingClientRect();
-        // Check if mouse is within navbar bounds
+        const navbarRect = navbarRef.current.getBoundingClientRect();
+
+        // Only track mouse when it's within or near the navbar
         if (
-          e.clientX >= rect.left &&
-          e.clientX <= rect.right &&
-          e.clientY >= rect.top &&
-          e.clientY <= rect.bottom
+          e.clientY <= navbarRect.bottom + 50 &&
+          e.clientY >= navbarRect.top - 50
         ) {
-          setMousePosition({ x: e.clientX, y: e.clientY });
+          setTargetPosition({ x: e.clientX, y: e.clientY });
           setIsHovering(true);
         } else {
           setIsHovering(false);
@@ -41,26 +65,30 @@ export default function NavbarGlow() {
       }
     };
 
+    // Start animation
+    animationFrameId = requestAnimationFrame(animatePosition);
+
+    // Add event listener for mouse movement
     window.addEventListener("mousemove", updateMousePosition);
 
+    // Clean up event listeners and timers
     return () => {
       window.removeEventListener("mousemove", updateMousePosition);
       clearTimeout(timer);
+      cancelAnimationFrame(animationFrameId);
     };
-  }, []);
-
-  const glow = {
-    left: `${mousePosition.x}px`,
-    top: `${mousePosition.y}px`,
-  };
+  }, [targetPosition, isHovering]);
 
   return (
-    <div ref={navbarRef} className="w-full h-full absolute top-0 left-0">
+    <>
+      <div ref={navbarRef} className="absolute inset-0 pointer-events-none" />
       <div
         className={`navbar-glow ${isActive && isHovering ? "active" : ""}`}
-        style={glow}
-        aria-hidden="true"
-      ></div>
-    </div>
+        style={{
+          left: `${mousePosition.x}px`,
+          top: `${mousePosition.y}px`,
+        }}
+      />
+    </>
   );
 }

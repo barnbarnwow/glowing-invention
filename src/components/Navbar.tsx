@@ -42,11 +42,11 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
+      className={`fixed w-full z-20 transition-all duration-300 ${
         isScrolled || !isHomePage
-          ? "bg-[var(--background-tertiary)] bg-opacity-90 shadow-md backdrop-blur-sm border-b border-[var(--border-color)]"
+          ? "bg-[var(--background-tertiary)] bg-opacity-60 shadow-md backdrop-blur-sm border-b border-[var(--border-color)]"
           : "bg-transparent"
-      } relative overflow-hidden`}
+      } relative overflow-visible`}
     >
       <NavbarGlow />
 
@@ -131,7 +131,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div className={`${isMenuOpen ? "block" : "hidden"} md:hidden`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[var(--background-tertiary)] shadow-lg border-t border-[var(--border-color)]">
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[var(--background-tertiary)] bg-opacity-80 backdrop-blur-sm shadow-lg border-t border-[var(--border-color)]">
           {navItems.map((item) => (
             <Link
               key={item.name}

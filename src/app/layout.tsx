@@ -23,7 +23,7 @@ export default function RootLayout({
         <ThemeProvider>
           <CursorGlow />
           <Navbar />
-          <main className="overflow-hidden">{children}</main>
+          <main className="overflow-hidden relative z-1">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>
