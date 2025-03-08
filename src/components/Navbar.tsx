@@ -25,7 +25,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 h-full">
         <div className="flex justify-between items-center h-full">
           {/* Logo/Brand */}
-          <div className="flex-shrink-0 font-medium text-lg">
+          <div className="flex-shrink-0 text-2xl">
             <Link href="/" className="text-[var(--foreground-primary)]">
               <span className="text-[var(--accent-primary)]">Barney</span>Jesse
             </Link>
@@ -33,12 +33,12 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center h-full">
-            <div className="ml-10 flex items-center space-x-6 h-full">
+            <div className="ml-10 flex items-center space-x-8 h-full">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.path}
-                  className={`px-2 py-1 text-sm font-medium transition-colors ${
+                  className={`px-2 text-base tracking-wider transition-colors ${
                     pathname === item.path
                       ? "text-[var(--accent-primary)]"
                       : "text-[var(--foreground-secondary)] hover:text-[var(--foreground-primary)]"
@@ -103,7 +103,7 @@ export default function Navbar() {
             <Link
               key={item.name}
               href={item.path}
-              className={`block px-3 py-2 text-sm font-medium ${
+              className={`block px-3 py-2 text-base tracking-wider ${
                 pathname === item.path
                   ? "text-[var(--accent-primary)]"
                   : "text-[var(--foreground-secondary)] hover:text-[var(--foreground-primary)]"

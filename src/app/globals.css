@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=EB+Garamond:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -18,8 +18,8 @@
   --warning-color: #f59e0b;
   
   /* Font families */
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'EB Garamond', Georgia, serif;
+  --font-sans: 'Bebas Neue', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   
   /* Animation variables */
   --page-transition-duration: 0.3s;
@@ -94,14 +94,29 @@ main {
   z-index: 1;
 }
 
-/* Typography styling - more minimalistic */
+/* Typography styling - adjusted for Bebas Neue and EB Garamond */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-family: var(--font-sans);
+  font-weight: 400; /* Bebas Neue only comes in one weight, so we use 400 */
+  letter-spacing: 0.02em; /* Slightly increased for Bebas Neue */
   position: relative;
   z-index: 5;
   margin-bottom: 1rem;
+  line-height: 1.1; /* Tighter line height for Bebas Neue */
+}
+
+/* Set paragraph text to use serif font for better readability */
+p, span, li {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+/* Use Bebas Neue for navigation, buttons, etc. */
+a, button, nav, .text-sm, .text-xs {
+  font-family: var(--font-sans);
+  letter-spacing: 0.03em; /* More letter spacing for Bebas Neue in smaller text */
 }
 
 /* Clean transparent background class */

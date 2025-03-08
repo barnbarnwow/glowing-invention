@@ -19,24 +19,24 @@ export default function Hero() {
         }}
       >
         <motion.h1
-          className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
+          className="text-5xl md:text-7xl mb-4 leading-none tracking-wide"
           variants={itemVariants}
         >
           Hi, I&apos;m{" "}
-          <span className="text-[var(--accent-primary)] font-serif tracking-wide">
+          <span className="text-[var(--accent-primary)]">
             {profileData.name}
           </span>
         </motion.h1>
 
         <motion.p
-          className="text-xl md:text-2xl text-[var(--foreground-secondary)] mb-8"
+          className="text-xl md:text-2xl text-[var(--foreground-secondary)] mb-8 font-serif"
           variants={itemVariants}
         >
           {profileData.title}
         </motion.p>
 
         <motion.p
-          className="text-lg text-[var(--foreground-tertiary)] mb-10 max-w-2xl mx-auto"
+          className="text-lg text-[var(--foreground-tertiary)] mb-10 max-w-2xl mx-auto font-serif"
           variants={itemVariants}
         >
           {profileData.bioParagraphs[0]}
@@ -46,13 +46,22 @@ export default function Hero() {
           className="flex flex-wrap gap-4 justify-center"
           variants={itemVariants}
         >
-          <Link href="/about" className="standard-button lift-effect">
+          <Link
+            href="/about"
+            className="standard-button lift-effect tracking-wider text-base"
+          >
             About Me
           </Link>
-          <Link href="/projects" className="standard-button lift-effect">
+          <Link
+            href="/projects"
+            className="standard-button lift-effect tracking-wider text-base"
+          >
             View My Work
           </Link>
-          <Link href="/skills" className="standard-button lift-effect">
+          <Link
+            href="/skills"
+            className="standard-button lift-effect tracking-wider text-base"
+          >
             My Skills
           </Link>
         </motion.div>
