@@ -22,9 +22,8 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   return (
     <motion.div
-      className="card bg-[var(--background-tertiary)] rounded-xl overflow-hidden shadow-lg animate-on-hover lift-effect"
+      className="card bg-[var(--background-tertiary)] rounded-xl overflow-hidden shadow-lg"
       variants={cardVariants}
-      whileHover={{ y: -1, transition: { duration: 0.2 } }}
     >
       <div className="h-48 bg-[var(--background-secondary)] flex items-center justify-center relative group">
         {imageUrl ? (

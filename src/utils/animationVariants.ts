@@ -33,9 +33,9 @@ export const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      duration: 0.3,
-      staggerChildren: 0.05,
-      delayChildren: 0.05,
+      duration: 0.4,
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
     },
   },
 };
@@ -44,14 +44,14 @@ export const containerVariants = {
 export const itemVariants = {
   hidden: {
     opacity: 0,
-    y: 10,
+    y: 15,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.25,
-      ease: [0.25, 0.1, 0.25, 1],
+      duration: 0.4,
+      ease: [0.25, 0.05, 0.35, 1],
     },
   },
 };
@@ -60,14 +60,14 @@ export const itemVariants = {
 export const itemVariantsReverse = {
   hidden: {
     opacity: 0,
-    y: -10,
+    y: -15,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.25,
-      ease: [0.25, 0.1, 0.25, 1],
+      duration: 0.4,
+      ease: [0.25, 0.05, 0.35, 1],
     },
   },
 };
@@ -83,8 +83,8 @@ export const cardVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.3,
-      ease: [0.25, 0.1, 0.25, 1],
+      duration: 0.4,
+      ease: [0.25, 0.05, 0.35, 1],
     },
   },
 }; 

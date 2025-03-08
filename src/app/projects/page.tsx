@@ -26,8 +26,8 @@ export default function ProjectsPage() {
               initial="hidden"
               animate="visible"
               transition={{
-                staggerChildren: 0.05,
-                delayChildren: 0.05,
+                staggerChildren: 0.1,
+                delayChildren: 0.1,
               }}
             >
               {projects.map((project) => (

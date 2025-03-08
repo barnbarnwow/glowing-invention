@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import {
   containerVariants,
   itemVariantsReverse,
+  cardVariants,
 } from "@/utils/animationVariants";
 import Card from "./Card";
 
@@ -15,16 +16,15 @@ export default function ProfileImage() {
   const isExternalImage = profileData.profileImage?.startsWith("http");
 
   return (
-    <Card className="p-0" liftEffect={false}>
+    <motion.div
+      className="card bg-[var(--background-tertiary)] rounded-xl overflow-hidden shadow-lg"
+      variants={cardVariants}
+    >
       <div className="p-8 h-full flex flex-col items-center justify-center">
         {/* Use a non-visible container for animation coordination */}
         <motion.div
           variants={containerVariants}
           className="contents" // Makes this div have no visual representation
-          transition={{
-            staggerChildren: 0.05,
-            delayChildren: 0.05,
-          }}
         >
           {/* Image container with animations from opposite direction */}
           <motion.div
@@ -78,6 +78,6 @@ export default function ProfileImage() {
           </motion.div>
         </motion.div>
       </div>
-    </Card>
+    </motion.div>
   );
 }

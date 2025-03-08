@@ -16,10 +16,6 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        transition={{
-          staggerChildren: 0.05,
-          delayChildren: 0.05,
-        }}
       >
         <motion.h1
           className="text-4xl md:text-6xl font-bold mb-6 leading-tight"

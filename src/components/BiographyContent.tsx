@@ -3,27 +3,20 @@
 import React from "react";
 import { profileData } from "@/data/profileData";
 import { motion } from "framer-motion";
-import { containerVariants, itemVariants } from "@/utils/animationVariants";
-import Card from "./Card";
+import {
+  containerVariants,
+  itemVariants,
+  cardVariants,
+} from "@/utils/animationVariants";
 
 export default function BiographyContent() {
   return (
-    <Card className="p-0" liftEffect={true}>
-      <motion.div
-        className="p-8 h-full"
-        variants={containerVariants}
-        transition={{
-          staggerChildren: 0.05,
-          delayChildren: 0.05,
-        }}
-      >
-        <motion.h2
-          className="text-2xl md:text-3xl font-bold mb-6 text-[var(--foreground-primary)] border-b border-[var(--border-color)] pb-3"
-          variants={itemVariants}
-        >
-          About Me
-        </motion.h2>
-        <div className="space-y-4">
+    <motion.div
+      className="card bg-[var(--background-tertiary)] rounded-xl overflow-hidden shadow-lg"
+      variants={cardVariants}
+    >
+      <motion.div className="p-8 h-full" variants={containerVariants}>
+        <motion.div variants={itemVariants} className="space-y-4">
           {/* Map through biography paragraphs */}
           {profileData.bioParagraphs.map((paragraph, index) => (
             <motion.p
@@ -36,7 +29,7 @@ export default function BiographyContent() {
           ))}
 
           {/* Education section - only show if there are education items */}
-          {profileData.education.length > 0 && (
+          {profileData.education && profileData.education.length > 0 && (
             <motion.div
               className="pt-4 border-t border-[var(--border-color)] mt-6"
               variants={itemVariants}
@@ -73,7 +66,7 @@ export default function BiographyContent() {
           )}
 
           {/* Interests section - only show if there are interests */}
-          {profileData.interests.length > 0 && (
+          {profileData.interests && profileData.interests.length > 0 && (
             <motion.div
               className="pt-4 border-t border-[var(--border-color)] mt-6"
               variants={itemVariants}
@@ -93,7 +86,6 @@ export default function BiographyContent() {
                     key={interest}
                     className="px-3 py-1 bg-[var(--accent-tertiary)]/10 text-[var(--accent-primary)] rounded-full text-sm sunken-effect"
                     variants={itemVariants}
-                    whileHover={{ scale: 1.03 }}
                   >
                     {interest}
                   </motion.span>
@@ -101,8 +93,8 @@ export default function BiographyContent() {
               </motion.div>
             </motion.div>
           )}
-        </div>
+        </motion.div>
       </motion.div>
-    </Card>
+    </motion.div>
   );
 }
