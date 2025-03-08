@@ -4,6 +4,7 @@ import React from "react";
 import PageTransition from "@/components/PageTransition";
 import ProfileImage from "@/components/ProfileImage";
 import BiographyContent from "@/components/BiographyContent";
+import Interests from "@/components/Interests";
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "@/utils/animationVariants";
 
@@ -32,9 +33,10 @@ export default function AboutPage() {
                 delayChildren: 0.1,
               }}
             >
-              {/* Left column - Profile */}
-              <div className="md:col-span-1">
+              {/* Left column - Profile & Interests */}
+              <div className="md:col-span-1 flex flex-col">
                 <ProfileImage />
+                <Interests />
               </div>
 
               {/* Right column - Bio */}
