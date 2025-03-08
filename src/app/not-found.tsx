@@ -10,7 +10,7 @@ export default function NotFound() {
   return (
     <PageTransition>
       <motion.div
-        className="min-h-screen flex flex-col items-center justify-center px-4 gradient-deep"
+        className="min-h-screen flex flex-col items-center justify-center px-4 clean-bg"
         variants={containerVariants}
         initial="hidden"
         animate="visible"

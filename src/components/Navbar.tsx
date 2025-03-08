@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
+import NavbarGlow from "./NavbarGlow";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,9 +46,11 @@ export default function Navbar() {
         isScrolled || !isHomePage
           ? "bg-[var(--background-tertiary)] bg-opacity-90 shadow-md backdrop-blur-sm border-b border-[var(--border-color)]"
           : "bg-transparent"
-      }`}
+      } relative overflow-hidden`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <NavbarGlow />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex justify-between h-16 items-center">
           {/* Logo/Brand */}
           <div className="flex-shrink-0 font-bold text-xl">

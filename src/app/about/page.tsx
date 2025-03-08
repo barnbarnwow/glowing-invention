@@ -12,7 +12,7 @@ export default function AboutPage() {
     <PageTransition>
       <div className="min-h-screen pt-16">
         {/* About Section */}
-        <section className="py-20 px-4 gradient-soft">
+        <section className="py-20 px-4 clean-bg">
           <div className="max-w-6xl mx-auto relative z-10">
             <motion.div
               className="grid grid-cols-1 md:grid-cols-3 gap-8"

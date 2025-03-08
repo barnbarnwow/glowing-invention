@@ -12,7 +12,7 @@ export default function ContactPage() {
     <PageTransition>
       <div className="min-h-screen pt-16">
         {/* Contact Section */}
-        <section className="py-20 px-4 gradient-deep">
+        <section className="py-20 px-4 clean-bg">
           <div className="max-w-4xl mx-auto relative z-10">
             <motion.h2
               className="text-3xl md:text-4xl font-bold mb-10 text-center text-[var(--foreground-primary)]"
